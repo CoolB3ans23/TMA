@@ -242,3 +242,14 @@ footer {
     font-family:"IBM Plex Mono";
 
 }
+.file-number {
+
+    font-family:"IBM Plex Mono";
+
+    color:#8a2d2d;
+
+    letter-spacing:2px;
+
+    font-size:14px;
+
+}
