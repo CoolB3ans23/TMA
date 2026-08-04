@@ -1,99 +1,74 @@
-/* GLOBAL SETTINGS */
+/* ==========================
+   GLOBAL SETTINGS
+========================== */
 
 * {
     box-sizing: border-box;
 }
 
-
 body {
-
- margin:0;
-
-    min-height:100vh;
-
-    background-image:Desk.jpeg
-    linear-gradient(
-        rgba(40,25,20,0.55),
-        rgba(40,25,20,0.55)
-  
-
-    background-size:cover;
-
-    background-position:center;
-
-    background-attachment:fixed;
-
-    font-family:"EB Garamond", serif;
-
-    color:#2a241f;
-}
-
-
-/* MAIN ARCHIVE AREA */
-
-.archive-container {
-
+    margin: 0;
     min-height: 100vh;
 
-    padding: 50px;
+    background-image:
+        linear-gradient(
+            rgba(40,25,20,0.55),
+            rgba(40,25,20,0.55)
+        ),
+        url("../Desk.jpeg");
 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    font-family: "EB Garamond", serif;
+    color: #2a241f;
 }
 
+/* ==========================
+   MAIN CONTAINER
+========================== */
 
+.archive-container {
+    min-height: 100vh;
+    padding: 50px;
+}
 
-/* HEADER */
+/* ==========================
+   HEADER
+========================== */
 
 header {
-
     text-align: center;
-
     color: #f6f1e7;
-
     margin-bottom: 40px;
-
 }
-
 
 h1 {
-
     font-family: "Cormorant Garamond", serif;
-
     font-size: 64px;
-
     letter-spacing: 5px;
-
     margin-bottom: 10px;
-
 }
-
 
 .subtitle {
-
     font-size: 28px;
-
     letter-spacing: 8px;
-
 }
-
 
 .access {
-
     font-family: "IBM Plex Mono", monospace;
-
     font-size: 14px;
-
+    letter-spacing: 2px;
 }
 
-
-
-/* NAVIGATION */
+/* ==========================
+   NAVIGATION
+========================== */
 
 nav {
-
     text-align: center;
-
     margin-bottom: 50px;
-
 }
 
 nav a {
@@ -103,12 +78,17 @@ nav a {
     text-decoration: none;
     padding: 12px 28px;
     margin: 0 3px;
+
     border: 1px solid #8d7655;
     border-bottom: none;
+
     border-radius: 8px 8px 0 0;
+
     font-family: "IBM Plex Mono", monospace;
+
     position: relative;
     top: 1px;
+
     transition: 0.2s;
 }
 
@@ -117,157 +97,199 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
-nav a:hover {
-
-    background:#ded3c1;
-
-    transform: translateY(-5px);
-
-}
-
-
-
-/* CASE FILE PAPER */
+/* ==========================
+   CASE FILE
+========================== */
 
 .case-file {
 
     background:
-        url("../images/paper.jpg");
+        url("../paper.png");
 
-    background-size:cover;
+    background-color: #efe5d2;
 
-    background-repeat:no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
 
-    background-color:#efe5d2;
+    max-width: 900px;
+
+    margin: auto;
+
+    padding: 70px;
+
+    border: 1px solid #d7c7aa;
+
+    position: relative;
+
+    box-shadow:
+        0 15px 30px rgba(0,0,0,.35),
+        inset 0 0 60px rgba(95,70,45,.12);
 
 }
 
+/* Fake paper clip */
 
-/* HEADINGS */
+.case-file::before {
 
+    content: "";
+
+    position: absolute;
+
+    width: 35px;
+    height: 70px;
+
+    border: 4px solid #8f8f8f;
+    border-bottom: none;
+
+    border-radius: 25px;
+
+    right: 35px;
+    top: -18px;
+
+    transform: rotate(12deg);
+
+}
+
+/* ==========================
+   FILE HEADER
+========================== */
+
+.file-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    font-family: "IBM Plex Mono", monospace;
+
+    font-size: 13px;
+
+    color: #7a5b45;
+
+    border-bottom: 1px solid #bfa98a;
+
+    padding-bottom: 12px;
+
+    margin-bottom: 35px;
+
+}
+
+.file-number {
+
+    font-family: "IBM Plex Mono", monospace;
+
+    color: #8a2d2d;
+
+    letter-spacing: 2px;
+
+    font-size: 14px;
+
+}
+
+/* ==========================
+   HEADINGS
+========================== */
 
 .case-file h2 {
 
-    font-family:"Cormorant Garamond", serif;
+    font-family: "Cormorant Garamond", serif;
 
-    font-size:45px;
+    font-size: 46px;
+
+    margin-top: 10px;
 
 }
 
-
-
-/* STATUS BOX */
-
+/* ==========================
+   ARCHIVE STATUS
+========================== */
 
 .archive-status {
 
+    margin-top: 40px;
 
-    margin-top:40px;
+    padding: 20px;
 
-    padding:20px;
+    border-left: 5px solid #8a2d2d;
 
-
-    border-left:
-
-    5px solid #8a2d2d;
-
-
-    font-family:"IBM Plex Mono", monospace;
-
+    font-family: "IBM Plex Mono", monospace;
 
 }
 
+/* ==========================
+   STAMP
+========================== */
 
+.stamp {
 
-/* BUTTON */
+    display: inline-block;
 
+    margin-top: 35px;
+
+    padding: 8px 18px;
+
+    border: 3px solid #8a2d2d;
+
+    color: #8a2d2d;
+
+    font-family: "IBM Plex Mono", monospace;
+
+    font-size: 18px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    transform: rotate(-8deg);
+
+    opacity: .65;
+
+}
+
+/* ==========================
+   BUTTON
+========================== */
 
 button {
 
+    margin-top: 40px;
 
-    margin-top:40px;
+    background: #8a2d2d;
 
+    color: white;
 
-    background:#8a2d2d;
+    border: none;
 
+    padding: 15px 40px;
 
-    color:white;
+    font-family: "IBM Plex Mono", monospace;
 
+    cursor: pointer;
 
-    border:none;
-
-
-    padding:15px 40px;
-
-
-    font-family:"IBM Plex Mono";
-
-
-    cursor:pointer;
-
+    transition: .3s;
 
 }
-
 
 button:hover {
 
-    background:#5f2020;
+    background: #5f2020;
 
 }
 
-
-
-/* FOOTER */
-
+/* ==========================
+   FOOTER
+========================== */
 
 footer {
 
-    text-align:center;
+    text-align: center;
 
-    color:#f6f1e7;
+    color: #f6f1e7;
 
-    margin-top:50px;
+    margin-top: 50px;
 
-    font-family:"IBM Plex Mono";
-
-}
-.file-number {
-
-    font-family:"IBM Plex Mono";
-
-    color:#8a2d2d;
-
-    letter-spacing:2px;
-
-    font-size:14px;
-
-}
-.stamp {
-
-    display:inline-block;
-
-    margin-top:30px;
-
-    padding:10px 20px;
-
-    border:3px solid #8a2d2d;
-
-    color:#8a2d2d;
-
-    font-family:"IBM Plex Mono";
-
-    transform:rotate(-8deg);
-
-    opacity:.8;
-
-}
-.file-header {
-    display: flex;
-    justify-content: space-between;
     font-family: "IBM Plex Mono", monospace;
-    font-size: 13px;
-    color: #7a5b45;
-    border-bottom: 1px solid #bfa98a;
-    padding-bottom: 12px;
-    margin-bottom: 35px;
+
+    font-size: 14px;
+
 }
