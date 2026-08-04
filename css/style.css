@@ -130,21 +130,16 @@ nav a:hover {
 /* CASE FILE PAPER */
 
 .case-file {
-    background: #f6f1e7;
 
-    max-width: 900px;
+    background:
+        url("../images/paper.jpg");
 
-    margin: auto;
+    background-size:cover;
 
-    padding: 70px;
+    background-repeat:no-repeat;
 
-    border: 1px solid #d7c7aa;
+    background-color:#efe5d2;
 
-    box-shadow:
-        0 15px 30px rgba(0,0,0,.35),
-        0 0 0 1px rgba(255,255,255,.4) inset;
-
-    position: relative;
 }
 
 
