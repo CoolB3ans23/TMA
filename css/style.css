@@ -16,7 +16,7 @@ body {
         rgba(40,25,20,0.55),
         rgba(40,25,20,0.55)
     ),
-    url("../images/desk.jpg");
+    url("..desk.jpg");
 
     background-size:cover;
 
@@ -97,29 +97,26 @@ nav {
 
 }
 
-
 nav a {
-
     display: inline-block;
-
-    background: #f6f1e7;
-
+    background: #d8c6a3;
     color: #2a241f;
-
     text-decoration: none;
-
-    padding: 15px 30px;
-
-    margin: 5px;
-
-    border-top: 5px solid #b48a47;
-
+    padding: 12px 28px;
+    margin: 0 3px;
+    border: 1px solid #8d7655;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
     font-family: "IBM Plex Mono", monospace;
-
-    transition: .3s;
-
+    position: relative;
+    top: 1px;
+    transition: 0.2s;
 }
 
+nav a:hover {
+    background: #e6d7b8;
+    transform: translateY(-2px);
+}
 
 nav a:hover {
 
@@ -134,24 +131,22 @@ nav a:hover {
 /* CASE FILE PAPER */
 
 .case-file {
+    background: #f6f1e7;
 
+    max-width: 900px;
 
-    background:#f6f1e7;
+    margin: auto;
 
-    max-width:900px;
+    padding: 70px;
 
-    margin:auto;
-
-    padding:60px;
-
+    border: 1px solid #d7c7aa;
 
     box-shadow:
+        0 15px 30px rgba(0,0,0,.35),
+        0 0 0 1px rgba(255,255,255,.4) inset;
 
-    0 25px 50px rgba(0,0,0,.5);
-
-
+    position: relative;
 }
-
 
 
 /* HEADINGS */
@@ -271,4 +266,14 @@ footer {
 
     opacity:.8;
 
+}
+.file-header {
+    display: flex;
+    justify-content: space-between;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 13px;
+    color: #7a5b45;
+    border-bottom: 1px solid #bfa98a;
+    padding-bottom: 12px;
+    margin-bottom: 35px;
 }
