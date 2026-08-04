@@ -11,12 +11,11 @@ body {
 
     min-height:100vh;
 
-    background-image:
+    background-image:Desk.jpeg
     linear-gradient(
         rgba(40,25,20,0.55),
         rgba(40,25,20,0.55)
-    ),
-    url("..Desk.jpg");
+  
 
     background-size:cover;
 
