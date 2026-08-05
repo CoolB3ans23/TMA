@@ -2,13 +2,13 @@
    GLOBAL
 ======================================= */
 
-*{
+* {
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-body{
+body {
 
     background:#4b382c;
 
@@ -22,33 +22,41 @@ body{
 
 }
 
+
 /* =======================================
    DATABASE WINDOW
 ======================================= */
 
-.database{
+.database {
 
     max-width:1400px;
 
     margin:auto;
 
-  background:#ede2cc;
+    background:#ede2cc;
 
     border:3px solid #3a2b21;
 
     box-shadow:
+        0 0 0 4px #b89d79,
+        0 15px 45px rgba(0,0,0,.45);
 
-    0 0 0 4px #b89d79,
+    position:relative;
 
-    0 15px 45px rgba(0,0,0,.45);
+    overflow:hidden;
+
+    animation:flicker .25s infinite alternate;
+
+    filter:blur(.15px);
 
 }
+
 
 /* =======================================
    TOP BAR
 ======================================= */
 
-.topbar{
+.topbar {
 
     display:flex;
 
@@ -70,7 +78,8 @@ body{
 
 }
 
-.system-title{
+
+.system-title {
 
     font-family:"Special Elite", cursive;
 
@@ -78,23 +87,26 @@ body{
 
 }
 
-.system-version{
+
+.system-version {
 
     opacity:.8;
 
 }
 
-#clock{
+
+#clock {
 
     font-weight:bold;
 
 }
 
+
 /* =======================================
    MAIN GRID
 ======================================= */
 
-.main-grid{
+.main-grid {
 
     display:grid;
 
@@ -104,11 +116,12 @@ body{
 
 }
 
+
 /* =======================================
    SIDEBAR
 ======================================= */
 
-.sidebar{
+.sidebar {
 
     background:#dfcfb3;
 
@@ -118,7 +131,8 @@ body{
 
 }
 
-.sidebar-title{
+
+.sidebar-title {
 
     font-family:"Special Elite", cursive;
 
@@ -132,7 +146,8 @@ body{
 
 }
 
-.sidebar nav{
+
+.sidebar nav {
 
     display:flex;
 
@@ -140,7 +155,8 @@ body{
 
 }
 
-.sidebar a{
+
+.sidebar a {
 
     color:#2d2118;
 
@@ -156,7 +172,8 @@ body{
 
 }
 
-.sidebar a:hover{
+
+.sidebar a:hover {
 
     background:#f3ead9;
 
@@ -166,11 +183,12 @@ body{
 
 }
 
+
 /* =======================================
    CONTENT
 ======================================= */
 
-.content{
+.content {
 
     display:grid;
 
@@ -182,11 +200,12 @@ body{
 
 }
 
+
 /* =======================================
    PANELS
 ======================================= */
 
-.panel{
+.panel {
 
     background:#f1e7d5;
 
@@ -200,13 +219,15 @@ body{
 
 }
 
-.panel.wide{
+
+.panel.wide {
 
     grid-column:span 2;
 
 }
 
-.panel-title{
+
+.panel-title {
 
     background:#dfcfb3;
 
@@ -224,7 +245,8 @@ body{
 
 }
 
-.panel p{
+
+.panel p {
 
     margin-bottom:14px;
 
@@ -232,11 +254,12 @@ body{
 
 }
 
+
 /* =======================================
    STATUS BAR
 ======================================= */
 
-.statusbar{
+.statusbar {
 
     display:flex;
 
@@ -254,17 +277,10 @@ body{
 
 }
 
+
 /* =======================================
-   CRT EFFECT
+   CRT SCANLINES
 ======================================= */
-
-.database{
-
-    position:relative;
-
-    overflow:hidden;
-
-}
 
 .database::after {
 
@@ -277,56 +293,21 @@ body{
     pointer-events:none;
 
     background:
-        repeating-linear-gradient(
-            to bottom,
-            rgba(255,255,255,.015) 0px,
-            rgba(255,255,255,.015) 1px,
-            rgba(0,0,0,.03) 2px,
-            rgba(0,0,0,.03) 3px
-        );
 
-    opacity:.55;
+    repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,.025) 0px,
+        rgba(255,255,255,.025) 1px,
+        rgba(0,0,0,.04) 2px,
+        rgba(0,0,0,.04) 3px
+    );
 
-}
+    opacity:.6;
 
-/* =======================================
-   RESPONSIVE
-======================================= */
-
-@media(max-width:900px){
-
-.main-grid{
-
-grid-template-columns:1fr;
+    z-index:10;
 
 }
 
-.sidebar{
-
-border-right:none;
-
-border-bottom:2px solid #b89d79;
-
-}
-
-.content{
-
-grid-template-columns:1fr;
-
-}
-
-.panel.wide{
-
-grid-column:span 1;
-
-}
-
-.statusbar{
-
-flex-direction:column;
-
-gap:8px;
-}
 
 /* =======================================
    FILM GRAIN
@@ -334,41 +315,116 @@ gap:8px;
 
 body::before {
 
-    content: "";
+    content:"";
 
-    position: fixed;
+    position:fixed;
 
-    inset: 0;
+    inset:0;
 
-    background: url("../filmgrain.png");
+    background-image:url("../filmgrain.png");
 
-    opacity: 0.12;
+    background-repeat:repeat;
 
-    pointer-events: none;
+    opacity:.18;
 
-    mix-blend-mode: multiply;
+    pointer-events:none;
 
-    z-index: 9999;
+    mix-blend-mode:multiply;
 
-}
-   @keyframes flicker {
-
-    0% { opacity: .98; }
-
-    50% { opacity: 1; }
-
-    100% { opacity: .97; }
+    z-index:9999;
 
 }
 
-.database{
 
-    animation:flicker .18s infinite alternate;
+/* =======================================
+   FLICKER EFFECT
+======================================= */
+
+@keyframes flicker {
+
+    0% {
+
+        opacity:.97;
+
+    }
+
+    20% {
+
+        opacity:1;
+
+    }
+
+    40% {
+
+        opacity:.96;
+
+    }
+
+    60% {
+
+        opacity:.99;
+
+    }
+
+    80% {
+
+        opacity:.95;
+
+    }
+
+    100% {
+
+        opacity:.98;
+
+    }
 
 }
-   .database{
 
-    filter:blur(.15px);
+
+/* =======================================
+   RESPONSIVE
+======================================= */
+
+@media(max-width:900px) {
+
+
+.main-grid {
+
+    grid-template-columns:1fr;
 
 }
 
+
+.sidebar {
+
+    border-right:none;
+
+    border-bottom:2px solid #b89d79;
+
+}
+
+
+.content {
+
+    grid-template-columns:1fr;
+
+}
+
+
+.panel.wide {
+
+    grid-column:span 1;
+
+}
+
+
+.statusbar {
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+
+}
