@@ -2,149 +2,163 @@
 <html lang="en">
 
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=EB+Garamond&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>The Magnus Institute Archive</title>
+    <title>Magnus Institute Archive</title>
 
-<link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=EB+Garamond&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Special+Elite&display=swap" rel="stylesheet">
 
 </head>
 
-
 <body>
- 
 
-<div class="archive-container">
+<div class="database">
 
+    <!-- TOP BAR -->
 
-<header>
+    <header class="topbar">
 
-<h1>
-THE MAGNUS INSTITUTE
-</h1>
+        <div class="system-title">
+            MAGNUS INSTITUTE ARCHIVAL DATABASE
+        </div>
 
-<p class="subtitle">
-ARCHIVAL DATABASE
-</p>
+        <div class="system-version">
+            Version 3.2.17
+        </div>
 
-<p class="access">
-RESTRICTED ACCESS • EST. 1818
-</p>
+        <div id="clock">
+            00-00-0000 00:00
+        </div>
 
-</header>
-   <nav>
-
-<a href="pages/statements.html">
-Statements
-</a>
-
-<a href="pages/timeline.html">
-Timeline
-</a>
-
-<a href="pages/characters.html">
-Characters
-</a>
-
-<a href="pages/entities.html">
-Entities
-</a>
-
-<a href="pages/about.html">
-About
-</a>
-
-</nav>
+    </header>
 
 
 
+    <!-- MAIN CONTENT -->
+
+    <main class="main-grid">
+
+        <!-- LEFT MENU -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-title">
+                ARCHIVE
+            </div>
+
+            <nav>
+
+                <a href="pages/statements.html">
+                    ► Statements
+                </a>
+
+                <a href="pages/characters.html">
+                    ► Characters
+                </a>
+
+                <a href="pages/entities.html">
+                    ► Entities
+                </a>
+
+                <a href="pages/timeline.html">
+                    ► Timeline
+                </a>
+
+                <a href="pages/about.html">
+                    ► About
+                </a>
+
+            </nav>
+
+        </aside>
 
 
 
+        <!-- RIGHT SIDE -->
+
+        <section class="content">
+
+            <!-- STATUS PANEL -->
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    SYSTEM STATUS
+                </div>
+
+                <p>User: Guest</p>
+
+                <p>Access Level: Public</p>
+
+                <p>Archive Status: ONLINE</p>
+
+                <p>Institute Location: London</p>
+
+            </section>
 
 
-<main>
+
+            <!-- DATABASE INFO -->
+
+            <section class="panel">
+
+                <div class="panel-title">
+                    DATABASE STATISTICS
+                </div>
+
+                <p>Statements Indexed: 0</p>
+
+                <p>Persons Recorded: 0</p>
+
+                <p>Entities Catalogued: 0</p>
+
+                <p>Locations Logged: 0</p>
+
+            </section>
 
 
-<section class="case-file">
 
-<p class="file-number">
-FILE NO. MAG-ARCH-001
-</p>
-<h2>
-Welcome, Archivist.
-</h2>
-  <div class="stamp">
-CATALOGUED
+            <!-- NEWS PANEL -->
+
+            <section class="panel wide">
+
+                <div class="panel-title">
+                    LATEST ARCHIVE UPDATES
+                </div>
+
+                <p>No statements have been indexed.</p>
+
+                <p>Database awaiting cataloguing.</p>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- FOOTER -->
+
+    <footer class="statusbar">
+
+        <span>CONNECTED TO MAGNUS ARCHIVE NETWORK</span>
+
+        <span>STATUS: ONLINE</span>
+
+    </footer>
+
 </div>
-
-
-<p>
-This database contains catalogued records
-of statements, individuals, locations,
-and entities associated with the Magnus Institute.
-</p>
-
-
-<div class="archive-status">
-
-<p>
-ARCHIVE STATUS
-</p>
-
-<hr>
-
-<p>
-Statements Indexed: 0
-</p>
-
-<p>
-Persons Recorded: 0
-</p>
-
-<p>
-Locations Logged: 0
-</p>
-
-</div>
-
-
-<button>
-ENTER ARCHIVE
-</button>
-
-
-</section>
-
-
-</main>
-
-
-
-<footer>
-
-<p>
-THE MAGNUS INSTITUTE ARCHIVES
-</p>
-
-</footer>
-
-
-</div>
-
 
 <script src="js/script.js"></script>
 
-
 </body>
-
 </html>
-<div class="file-header">
-    <span>FILE NO. MAG-ARCH-001</span>
-    <span>STATUS: CATALOGUED</span>
-</div>
