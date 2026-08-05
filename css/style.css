@@ -32,7 +32,7 @@ body{
 
     margin:auto;
 
-    background:#efe3cb;
+  background:#ede2cc;
 
     border:3px solid #3a2b21;
 
@@ -188,7 +188,7 @@ body{
 
 .panel{
 
-    background:#f8f2e7;
+    background:#f1e7d5;
 
     border:2px solid #c7b18e;
 
@@ -266,7 +266,7 @@ body{
 
 }
 
-.database::after{
+.database::after {
 
     content:"";
 
@@ -277,22 +277,15 @@ body{
     pointer-events:none;
 
     background:
+        repeating-linear-gradient(
+            to bottom,
+            rgba(255,255,255,.015) 0px,
+            rgba(255,255,255,.015) 1px,
+            rgba(0,0,0,.03) 2px,
+            rgba(0,0,0,.03) 3px
+        );
 
-    repeating-linear-gradient(
-
-        to bottom,
-
-        rgba(255,255,255,.02),
-
-        rgba(255,255,255,.02) 2px,
-
-        rgba(0,0,0,.02) 3px,
-
-        rgba(0,0,0,.02) 4px
-
-    );
-
-    opacity:.35;
+    opacity:.55;
 
 }
 
@@ -358,4 +351,19 @@ body::before {
     z-index: 9999;
 
 }
+   @keyframes flicker {
+
+    0% { opacity: .98; }
+
+    50% { opacity: 1; }
+
+    100% { opacity: .97; }
+
 }
+
+.database{
+
+    animation:flicker .18s infinite alternate;
+
+}
+
