@@ -1,295 +1,339 @@
-/* ==========================
-   GLOBAL SETTINGS
-========================== */
+/* =======================================
+   GLOBAL
+======================================= */
 
-* {
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    margin: 0;
-    min-height: 100vh;
+body{
 
-    background-image:
-        linear-gradient(
-            rgba(40,25,20,0.55),
-            rgba(40,25,20,0.55)
-        ),
-        url("../Desk.jpeg");
+    background:#4b382c;
 
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    color:#221c18;
 
-    font-family: "EB Garamond", serif;
-    color: #2a241f;
+    font-family:"IBM Plex Mono", monospace;
+
+    min-height:100vh;
+
+    padding:30px;
+
 }
 
-/* ==========================
-   MAIN CONTAINER
-========================== */
+/* =======================================
+   DATABASE WINDOW
+======================================= */
 
-.archive-container {
-    min-height: 100vh;
-    padding: 50px;
-}
+.database{
 
-/* ==========================
-   HEADER
-========================== */
+    max-width:1400px;
 
-header {
-    text-align: center;
-    color: #f6f1e7;
-    margin-bottom: 40px;
-}
+    margin:auto;
 
-h1 {
-    font-family: "Cormorant Garamond", serif;
-    font-size: 64px;
-    letter-spacing: 5px;
-    margin-bottom: 10px;
-}
+    background:#efe3cb;
 
-.subtitle {
-    font-size: 28px;
-    letter-spacing: 8px;
-}
-
-.access {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 14px;
-    letter-spacing: 2px;
-}
-
-/* ==========================
-   NAVIGATION
-========================== */
-
-nav {
-    text-align: center;
-    margin-bottom: 50px;
-}
-
-nav a {
-    display: inline-block;
-    background: #d8c6a3;
-    color: #2a241f;
-    text-decoration: none;
-    padding: 12px 28px;
-    margin: 0 3px;
-
-    border: 1px solid #8d7655;
-    border-bottom: none;
-
-    border-radius: 8px 8px 0 0;
-
-    font-family: "IBM Plex Mono", monospace;
-
-    position: relative;
-    top: 1px;
-
-    transition: 0.2s;
-}
-
-nav a:hover {
-    background: #e6d7b8;
-    transform: translateY(-2px);
-}
-
-/* ==========================
-   CASE FILE
-========================== */
-
-.case-file {
-
-    background:
-        url("../paper.png");
-
-    background-color: #efe5d2;
-
-    background-size: cover;
-    background-repeat: no-repeat;
-
-    max-width: 900px;
-
-    margin: auto;
-
-    padding: 70px;
-
-    border: 1px solid #d7c7aa;
-
-    position: relative;
+    border:3px solid #3a2b21;
 
     box-shadow:
-        0 15px 30px rgba(0,0,0,.35),
-        inset 0 0 60px rgba(95,70,45,.12);
+
+    0 0 0 4px #b89d79,
+
+    0 15px 45px rgba(0,0,0,.45);
 
 }
 
-/* Fake paper clip */
+/* =======================================
+   TOP BAR
+======================================= */
 
-.case-file::before {
+.topbar{
 
-    content: "";
+    display:flex;
 
-    position: absolute;
+    justify-content:space-between;
 
-    width: 35px;
-    height: 70px;
+    align-items:center;
 
-    border: 4px solid #8f8f8f;
-    border-bottom: none;
+    padding:12px 18px;
 
-    border-radius: 25px;
+    background:#3a2b21;
 
-    right: 35px;
-    top: -18px;
+    color:#efe3cb;
 
-    transform: rotate(12deg);
+    border-bottom:3px solid #b89d79;
 
-}
+    font-size:14px;
 
-/* ==========================
-   FILE HEADER
-========================== */
-
-.file-header {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    font-family: "IBM Plex Mono", monospace;
-
-    font-size: 13px;
-
-    color: #7a5b45;
-
-    border-bottom: 1px solid #bfa98a;
-
-    padding-bottom: 12px;
-
-    margin-bottom: 35px;
+    letter-spacing:1px;
 
 }
 
-.file-number {
+.system-title{
 
-    font-family: "IBM Plex Mono", monospace;
+    font-family:"Special Elite", cursive;
 
-    color: #8a2d2d;
-
-    letter-spacing: 2px;
-
-    font-size: 14px;
+    font-size:18px;
 
 }
 
-/* ==========================
-   HEADINGS
-========================== */
+.system-version{
 
-.case-file h2 {
-
-    font-family: "Cormorant Garamond", serif;
-
-    font-size: 46px;
-
-    margin-top: 10px;
+    opacity:.8;
 
 }
 
-/* ==========================
-   ARCHIVE STATUS
-========================== */
+#clock{
 
-.archive-status {
-
-    margin-top: 40px;
-
-    padding: 20px;
-
-    border-left: 5px solid #8a2d2d;
-
-    font-family: "IBM Plex Mono", monospace;
+    font-weight:bold;
 
 }
 
-/* ==========================
-   STAMP
-========================== */
+/* =======================================
+   MAIN GRID
+======================================= */
 
-.stamp {
+.main-grid{
 
-    display: inline-block;
+    display:grid;
 
-    margin-top: 35px;
+    grid-template-columns:280px 1fr;
 
-    padding: 8px 18px;
-
-    border: 3px solid #8a2d2d;
-
-    color: #8a2d2d;
-
-    font-family: "IBM Plex Mono", monospace;
-
-    font-size: 18px;
-
-    letter-spacing: 3px;
-
-    text-transform: uppercase;
-
-    transform: rotate(-8deg);
-
-    opacity: .65;
+    min-height:700px;
 
 }
 
-/* ==========================
-   BUTTON
-========================== */
+/* =======================================
+   SIDEBAR
+======================================= */
 
-button {
+.sidebar{
 
-    margin-top: 40px;
+    background:#dfcfb3;
 
-    background: #8a2d2d;
+    border-right:2px solid #b89d79;
 
-    color: white;
-
-    border: none;
-
-    padding: 15px 40px;
-
-    font-family: "IBM Plex Mono", monospace;
-
-    cursor: pointer;
-
-    transition: .3s;
+    padding:25px;
 
 }
 
-button:hover {
+.sidebar-title{
 
-    background: #5f2020;
+    font-family:"Special Elite", cursive;
+
+    font-size:24px;
+
+    margin-bottom:25px;
+
+    border-bottom:2px solid #8b6c4a;
+
+    padding-bottom:12px;
 
 }
 
-/* ==========================
-   FOOTER
-========================== */
+.sidebar nav{
 
-footer {
+    display:flex;
 
-    text-align: center;
+    flex-direction:column;
 
-    color: #f6f1e7;
+}
 
-    margin-top: 50px;
+.sidebar a{
 
-    font-family: "IBM Plex Mono", monospace;
+    color:#2d2118;
 
-    font-size: 14px;
+    text-decoration:none;
+
+    padding:12px;
+
+    margin-bottom:10px;
+
+    border:1px solid transparent;
+
+    transition:.2s;
+
+}
+
+.sidebar a:hover{
+
+    background:#f3ead9;
+
+    border:1px solid #8b6c4a;
+
+    padding-left:18px;
+
+}
+
+/* =======================================
+   CONTENT
+======================================= */
+
+.content{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:20px;
+
+    padding:25px;
+
+}
+
+/* =======================================
+   PANELS
+======================================= */
+
+.panel{
+
+    background:#f8f2e7;
+
+    border:2px solid #c7b18e;
+
+    padding:20px;
+
+    min-height:220px;
+
+    position:relative;
+
+}
+
+.panel.wide{
+
+    grid-column:span 2;
+
+}
+
+.panel-title{
+
+    background:#dfcfb3;
+
+    border-bottom:2px solid #c7b18e;
+
+    margin:-20px -20px 20px -20px;
+
+    padding:12px 18px;
+
+    font-family:"Special Elite", cursive;
+
+    font-size:20px;
+
+    letter-spacing:1px;
+
+}
+
+.panel p{
+
+    margin-bottom:14px;
+
+    line-height:1.6;
+
+}
+
+/* =======================================
+   STATUS BAR
+======================================= */
+
+.statusbar{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    background:#3a2b21;
+
+    color:#efe3cb;
+
+    padding:12px 18px;
+
+    border-top:3px solid #b89d79;
+
+    font-size:14px;
+
+}
+
+/* =======================================
+   CRT EFFECT
+======================================= */
+
+.database{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.database::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+
+    repeating-linear-gradient(
+
+        to bottom,
+
+        rgba(255,255,255,.02),
+
+        rgba(255,255,255,.02) 2px,
+
+        rgba(0,0,0,.02) 3px,
+
+        rgba(0,0,0,.02) 4px
+
+    );
+
+    opacity:.35;
+
+}
+
+/* =======================================
+   RESPONSIVE
+======================================= */
+
+@media(max-width:900px){
+
+.main-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.sidebar{
+
+border-right:none;
+
+border-bottom:2px solid #b89d79;
+
+}
+
+.content{
+
+grid-template-columns:1fr;
+
+}
+
+.panel.wide{
+
+grid-column:span 1;
+
+}
+
+.statusbar{
+
+flex-direction:column;
+
+gap:8px;
+
+}
 
 }
