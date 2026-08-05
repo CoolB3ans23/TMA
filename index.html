@@ -1,165 +1,614 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <link rel="stylesheet" href="style.css">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monochrome OS</title>
+    <link rel="icon" type="image/png" href="https://i.postimg.cc/brGGFFqb/IMG_1929.png">
 
-    <title>Magnus Institute Archive</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    <link rel="stylesheet" href="css/style.css">
+*, html, body, textarea, input, p, span, div, img, div {
+    cursor: url("https://cdn.cursors-4u.net/previews/boo-mario-f54cafb3-32.webp")32 32 , default !important;
+}
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+a, a *, button, .window-btn, [role="button"] {
+    cursor: url("https://cdn.cursors-4u.net/previews/boo-link-select-91739595-32.webp")32 32, pointer !important;
+}
 
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Special+Elite&display=swap" rel="stylesheet">
+        ::selection {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        ::-moz-selection {
+            background-color: #000000;
+            color: #ffffff;
+        }
 
+        body {
+            background-color: #f4f4f4;
+            background-image: 
+                linear-gradient(#d1d1d1 1px, transparent 1px),
+                linear-gradient(90deg, #d1d1d1 1px, transparent 1px);
+            background-size: 20px 20px;
+            font-family: 'VT323', monospace;
+            color: #000;
+            padding: 20px;
+            font-size: 18px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #fff;
+            border-left: 2px solid #000;
+            border-top: 2px solid #000;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #000;
+            border: 1px solid #fff;
+        }
+
+.layout-container {
+    display: grid;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 20px;
+    grid-template-columns: repeat(3, 1fr) 320px;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+        "main main main cam"
+        "main main main chat"
+        "follower sub dono chat";
+}
+
+        .window {
+            background: #000;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .window-header {
+            background: #000;
+            color: #fff;
+            padding: 8px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .window-controls {
+            display: flex;
+            gap: 4px;
+        }
+        .window-btn {
+            width: 16px;
+            height: 16px;
+            border: 1px solid #fff;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .window-btn.min::after {
+            content: "";
+            width: 8px;
+            height: 2px;
+            background: #fff;
+            margin-top: 8px;
+        }
+        .window-btn.max::after {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border: 1px solid #fff;
+        }
+        .window-btn.close::after {
+            content: "X";
+            color: #fff;
+            font-size: 10px;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+        }
+
+        .window-body {
+            background: #fff;
+            margin: 0 6px 6px 6px;
+            border-radius: 12px;
+            padding: 15px;
+            position: relative;
+        }
+
+        .main-container { 
+            grid-area: main; 
+            height: 730px; 
+        }
+        
+        .main-container .window-body {
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+        
+        .banner {
+            width: 100%;
+            height: 140px;
+            background: url('https://i.pinimg.com/webp85/1200x/41/c2/fd/41c2fd79179ae20a9b5aa76a91fa4291.webp') center/cover;
+            margin-bottom: 20px;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: flex-end;
+            gap: 30px;
+            margin-bottom: 0px;
+            padding-left: 10px;
+        }
+
+        .profile-mask {
+            width: 180px; 
+            height: 180px; 
+            flex-shrink: 0;
+            margin-top: -80px;
+            position: relative;
+            z-index: 10;
+            
+            -webkit-mask-image: url('https://i.postimg.cc/7YMf2khC/IMG-1350.png');
+            -webkit-mask-size: contain;
+            -webkit-mask-repeat: no-repeat;
+            -webkit-mask-position: center;
+            mask-image: url('https://i.postimg.cc/7YMf2khC/IMG-1350.png');
+            mask-size: contain;
+            mask-repeat: no-repeat;
+            mask-position: center;
+            
+            background-image: url('https://i.pinimg.com/736x/c8/ea/ca/c8eacab3969cb56d76ea7c6860798d72.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .site-title {
+            font-size: 70px; 
+            font-weight: bold;
+            text-transform: uppercase;
+            text-shadow: 2px 2px 0px #ccc;
+            line-height: 1.0;
+            margin-bottom: 30px;
+        }
+
+        .stamps-text-section {
+            display: flex;
+            gap: 25px;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .stamps-container {
+            display: flex;
+            flex-direction: column;
+            gap: 11px;
+            width: 120px; 
+            flex-shrink: 0;
+        }
+
+        .stamp {
+            width: 135px; 
+            height: auto;
+            border: 1px solid #000;
+        }
+
+        .text-container {
+            flex-grow: 1;
+            font-size: 22px; 
+            line-height: 1.4;
+            border: 2px dashed #000;
+            padding: 15px;
+            background: #f9f9f9;
+        }
+
+        .footer {
+            text-align: center;
+            border-top: 2px solid #000;
+            padding-top: 15px;
+            font-weight: bold;
+            margin-top: 20px;
+            font-size: 20px;
+        }
+
+        .cam-container { grid-area: cam; }
+
+        .cam-container .window-body {
+            height: 200px; 
+            overflow-y: auto; 
+        }
+
+        .nav-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: #000;
+            font-size: 22px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            padding: 3px 5px;
+        }
+
+        .nav-link img {
+            width: 26px;
+            height: 26px;
+            object-fit: contain;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background-color: #000;
+            color: #fff;
+            transform: translateX(8px);
+            border-radius: 5px;
+        }
+        .nav-link:hover img {
+            transform: rotate(15deg) scale(1.2);
+            filter: invert(1);
+        }
+
+.chat-container { 
+    grid-area: chat; 
+    display: flex; 
+    flex-direction: column;
+    height: 100%; 
+}
+
+.chat-container .window-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 10px;
+    flex-grow: 1; 
+}
+
+        .webrings-box {
+            height: 275px;
+            overflow-y: auto; 
+            border: 1px dotted #888;
+            padding: 10px;
+            flex-shrink: 0;
+        }
+
+.update-log-box {
+    overflow-y: auto; 
+    border: 1px dotted #888;
+    padding: 10px;
+    min-height: 260px; 
+}
+
+        .chat-container h3 {
+            border-bottom: 1px solid #000;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .mini-left { grid-area: follower; }
+        .mini-center { grid-area: sub; }
+        .mini-right { grid-area: dono; }
+
+        .mini-window-body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px;
+            height: 65px; 
+        }
+
+        .four-links-grid {
+            display: flex;
+            flex-direction: row; 
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            gap: 5px;
+        }
+        .four-links-grid a {
+            display: block;
+            width: 45px;
+            height: 45px;
+        }
+        .four-links-grid a img {
+            width: 45px;
+            height: 45px;
+            object-fit: cover;
+            border-radius: 50%; 
+            border: 2px solid #000;
+            transition: transform 0.2s;
+        }
+        .four-links-grid a:hover img {
+            transform: scale(1.1);
+        }
+
+        .web-button-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+        }
+        .web-button {
+            width: 88px;
+            height: 31px;
+            border: 1px solid #000;
+            flex-shrink: 0;
+        }
+        .code-box {
+            flex-grow: 1;
+            height: 45px;
+            font-family: monospace;
+            font-size: 11px;
+            resize: none;
+            overflow-y: auto;
+            border: 1px solid #000;
+            padding: 4px;
+        }
+
+        .counter-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+
+a {
+    color: #000000;
+    text-decoration: none;
+    border-bottom: 2px dashed #000000; 
+    font-weight: bold;
+    padding: 0 2px;
+    transition: background-color 0.1s ease, color 0.1s ease;
+}
+
+a:hover {
+    background-color: #000000;
+    color: #ffffff;            
+    border-bottom-style: solid; 
+}
+
+a:visited {
+    color: #000000;
+}
+
+.link-botao {
+    display: inline-block;
+    border: 2px solid #000000;
+    background-color: #ffffff;
+    padding: 4px 8px;
+    box-shadow: 2px 2px 0px #000000;
+    border-bottom: 2px solid #000000; 
+}
+
+.link-botao:hover {
+    background-color: #000000;
+    color: #ffffff;
+    box-shadow: none;
+    transform: translate(2px, 2px);
+}
+
+a:has(img), 
+a:has(picture),
+.four-links-grid a,
+.counter-container a,
+.web-button-container a {
+    border-bottom: none !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+}
+
+a:hover:has(img),
+.four-links-grid a:hover,
+.counter-container a:hover,
+.web-button-container a:hover {
+    background-color: transparent !important;
+    color: inherit !important;
+}
+
+.four-links-grid img, 
+.web-button,
+.counter-container img {
+    border-bottom: none;
+}
+
+.nav-link {
+    border-bottom: none !important; 
+    padding: 3px 5px !important;
+    display: flex !important;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-link:hover {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+    border-bottom: none !important;
+    border-radius: 5px;
+}
+    </style>
 </head>
-
 <body>
 
-<div class="database">
+    <div class="layout-container">
 
-    <!-- TOP BAR -->
-
-    <header class="topbar">
-
-        <div class="system-title">
-            MAGNUS INSTITUTE ARCHIVAL DATABASE
-        </div>
-
-        <div class="system-version">
-            Version 3.2.17
-        </div>
-
-        <div id="clock">
-            00-00-0000 00:00
-        </div>
-
-    </header>
-
-
-
-    <!-- MAIN CONTENT -->
-
-    <main class="main-grid">
-
-        <!-- LEFT MENU -->
-
-        <aside class="sidebar">
-
-            <div class="sidebar-title">
-                ARCHIVE
+        <div class="window main-container">
+            <div class="window-header">
+                <span>Title</span>
+                <div class="window-controls">
+                    <div class="window-btn min"></div>
+                    <div class="window-btn max"></div>
+                    <div class="window-btn close"></div>
+                </div>
             </div>
+            <div class="window-body">
+                <div class="banner"></div>
 
-            <nav>
-
-                <a href="pages/statements.html">
-                    ► Statements
-                </a>
-
-                <a href="pages/characters.html">
-                    ► Characters
-                </a>
-
-                <a href="pages/entities.html">
-                    ► Entities
-                </a>
-
-                <a href="pages/timeline.html">
-                    ► Timeline
-                </a>
-
-                <a href="pages/about.html">
-                    ► About
-                </a>
-
-            </nav>
-
-        </aside>
-
-
-
-        <!-- RIGHT SIDE -->
-
-        <section class="content">
-
-            <!-- STATUS PANEL -->
-
-            <section class="panel">
-
-                <div class="panel-title">
-                    SYSTEM STATUS
+                <div class="profile-section">
+                    <div class="profile-mask"></div>
+                    <div class="site-title">Monochrome OS</div>
                 </div>
 
-                <p>User: Guest</p>
+                <div class="stamps-text-section">
+                    <div class="stamps-container">
+                        <img class="stamp" src="https://64.media.tumblr.com/435edaae62c10bec33af7681955b8cbb/dcd971c3b6eef1dd-e1/s100x200/fc60fe18511c27f53e3d6ce709a0080e106b3f13.gifv" alt="Stamp">
+                        <img class="stamp" src="https://64.media.tumblr.com/435edaae62c10bec33af7681955b8cbb/dcd971c3b6eef1dd-e1/s100x200/fc60fe18511c27f53e3d6ce709a0080e106b3f13.gifv" alt="Stamp">
+                        <img class="stamp" src="https://64.media.tumblr.com/435edaae62c10bec33af7681955b8cbb/dcd971c3b6eef1dd-e1/s100x200/fc60fe18511c27f53e3d6ce709a0080e106b3f13.gifv" alt="Stamp">
+                        <img class="stamp" src="https://64.media.tumblr.com/435edaae62c10bec33af7681955b8cbb/dcd971c3b6eef1dd-e1/s100x200/fc60fe18511c27f53e3d6ce709a0080e106b3f13.gifv" alt="Stamp">
+                    </div>
+                    
+                    <div class="text-container">
+<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
 
-                <p>Access Level: Public</p>
-
-                <p>Archive Status: ONLINE</p>
-
-                <p>Institute Location: London</p>
-
-            </section>
-
-
-
-            <!-- DATABASE INFO -->
-
-            <section class="panel">
-
-                <div class="panel-title">
-                    DATABASE STATISTICS
+<p>Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend.</p>
+                    </div>
                 </div>
 
-                <p>Statements Indexed: 0</p>
+                <div class="footer">
+                    © 2026 - Credit to <a href="https://coredreamz.neocities.org/">Kaskau</a>
 
-                <p>Persons Recorded: 0</p>
+            </div>
+          </div>
+        </div>
 
-                <p>Entities Catalogued: 0</p>
-
-                <p>Locations Logged: 0</p>
-
-            </section>
-
-
-
-            <!-- NEWS PANEL -->
-
-            <section class="panel wide">
-
-                <div class="panel-title">
-                    LATEST ARCHIVE UPDATES
+        <div class="window cam-container">
+            <div class="window-header">
+                <span>Title</span>
+                <div class="window-controls">
+                    <div class="window-btn min"></div>
+                    <div class="window-btn max"></div>
+                    <div class="window-btn close"></div>
                 </div>
+            </div>
+            <div class="window-body">
+                <ul class="nav-list">
+                    <li><a href="#" class="nav-link"><img src="https://i.postimg.cc/dQ4ztvzQ/IMG_2344.gif" alt="icon"> About me</a></li>
+                    <li><a href="#" class="nav-link"><img src="https://i.postimg.cc/dQ4ztvzQ/IMG_2344.gif" alt="icon"> Sitemap</a></li>
+                    <li><a href="#" class="nav-link"><img src="https://i.postimg.cc/dQ4ztvzQ/IMG_2344.gif" alt="icon"> Toybox</a></li>
+                    <li><a href="#" class="nav-link"><img src="https://i.postimg.cc/dQ4ztvzQ/IMG_2344.gif" alt="icon"> Blog</a></li>
+                    <li><a href="#" class="nav-link"><img src="https://i.postimg.cc/dQ4ztvzQ/IMG_2344.gif" alt="icon"> Guestbook</a></li>
+                    <li><a href="#" class="nav-link"><img src="https://i.postimg.cc/dQ4ztvzQ/IMG_2344.gif" alt="icon"> OC</a></li>
+                    <li><a href="#" class="nav-link"><img src="https://i.postimg.cc/dQ4ztvzQ/IMG_2344.gif" alt="icon"> Shires</a></li>
+                </ul>
+            </div>
+        </div>
 
-                <p>No statements have been indexed.</p>
-
-                <p>Database awaiting cataloguing.</p>
-
-            </section>
-
-        </section>
-
-    </main>
-
-
-
-    <!-- FOOTER -->
-
-    <footer class="statusbar">
-
-        <span>CONNECTED TO MAGNUS ARCHIVE NETWORK</span>
-
-        <span>STATUS: ONLINE</span>
-
-    </footer>
-
+        <div class="window chat-container">
+            <div class="window-header">
+                <span>Title</span>
+                <div class="window-controls">
+                    <div class="window-btn min"></div>
+                    <div class="window-btn max"></div>
+                    <div class="window-btn close"></div>
+                </div>
+            </div>
+            <div class="window-body">
+                <div class="webrings-box">
+                    <h3>WebThings</h3>
+                    <link rel="stylesheet" href="/Layouts/FakeWidgetWebring.css">
+                    <div class="fake-webring">
+    <div class="webring-title">- Non-existent webring -</div>
+    <div class="webring-nav">
+        <a href="#" class="webring-btn" onclick="alert('I told you this webring was fake, stop clicking on it as if it were going to work!'); return false;">[ Previous ]</a>
+        <a href="#" class="webring-btn" onclick="alert('I told you it was fake, now you made a fool of yourself, and I'm going to laugh, a LOT, haha...'); return false;">[ Next ]</a>
+    </div>
+    <div class="webring-info">
+        This webring literally doesn't exist;--;
+    </div>
 </div>
+                </div>
+                
+                <div class="update-log-box">
+                    <h3>Updates Log</h3>
+                    <p><b>15/05/26:</b> nanananaana</p>
+                    <p><b>12/05/26:</b> Black and white, haha.</p>
+                    <p><b>10/05/26:</b> Adjustments, adjustments, adjustments.</p>
+                    <p><b>05/05/26:</b> Pretty much every container here has a scroll area, so put whatever you want in it! :)</p>
+                    <p><b>04/05/26:</b> I THINK the counter works, but you should probably set up your own, okay?</p>
+                </div>
+            </div>
+        </div>
 
-<script src="js/script.js"></script>
+        <div class="window mini-left">
+            <div class="window-header">
+                <span>    Title</span>
+                <div class="window-controls">
+                    <div class="window-btn min"></div>
+                    <div class="window-btn max"></div>
+                    <div class="window-btn close"></div>
+                </div>
+            </div>
+            <div class="window-body mini-window-body">
+                <div class="four-links-grid">
+                    <a href="#" target="_blank"><img src="https://i.pinimg.com/736x/dc/de/e2/dcdee20a4c56c531f0f9ddec72c398b2.jpg" alt="Img 1"></a>
+                    <a href="#" target="_blank"><img src="https://i.pinimg.com/webp85/1200x/4a/0d/d7/4a0dd7d4a02622868c100f7bab991603.webp" alt="Img 2"></a>
+                    <a href="#" target="_blank"><img src="https://i.pinimg.com/736x/d2/47/c4/d247c445031b9174acf8e8358fc9452e.jpg" alt="Img 3"></a>
+                    <a href="#" target="_blank"><img src="https://i.pinimg.com/736x/4b/48/2c/4b482c8cdaa66254150a0e692b263ea6.jpg" alt="Img 4"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="window mini-center">
+            <div class="window-header">
+                <span>    Title</span>
+                <div class="window-controls">
+                    <div class="window-btn min"></div>
+                    <div class="window-btn max"></div>
+                    <div class="window-btn close"></div>
+                </div>
+            </div>
+            <div class="window-body mini-window-body">
+                <div class="web-button-container">
+                    <img class="web-button" src="https://64.media.tumblr.com/7637b8f1c5783cffd363b8b5533fe811/01810c298b9b7eda-84/s100x200/07c4d2a96eb4a62b848d398cf8f37b56e62cdca2.gifv" alt="Web Button">
+                    <textarea class="code-box" readonly><a href="SITE_URL"><img src="BUTTON_URL" border="0"></a></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="window mini-right">
+            <div class="window-header">
+                <span>    Title</span>
+                <div class="window-controls">
+                    <div class="window-btn min"></div>
+                    <div class="window-btn max"></div>
+                    <div class="window-btn close"></div>
+                </div>
+            </div>
+            <div class="window-body mini-window-body">
+                <div class="counter-container">
+                    <script language="javascript" type="text/javascript" src="//counter1.fc2.com/counter.php?id=89516079"></script>
+                    <noscript><img src="//counter1.fc2.com/counter_img.php?id=89516079" /></noscript>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 </body>
 </html>
