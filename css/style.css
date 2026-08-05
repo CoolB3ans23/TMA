@@ -366,4 +366,9 @@ body::before {
     animation:flicker .18s infinite alternate;
 
 }
+   .database{
+
+    filter:blur(.15px);
+
+}
 
