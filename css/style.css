@@ -1,430 +1,428 @@
-/* =======================================
-   GLOBAL
-======================================= */
+/* ==========================================
+   MAGNUS ARCHIVE TERMINAL
+========================================== */
 
-* {
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+/* =========================
+   COLOURS
+========================= */
+
+:root{
+    --bg:#040404;
+    --window:#0b0b0b;
+    --panel:#101010;
+    --border:#38ff75;
+    --text:#a6ffbf;
+    --header:#38ff75;
+    --header-text:#000;
+}
+
+/* =========================
+   RESET
+========================= */
+
+*{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
-body {
-
-    background:#4b382c;
-
-    color:#221c18;
-
-    font-family:"IBM Plex Mono", monospace;
-
-    min-height:100vh;
-
-    padding:30px;
-
+html{
+    scroll-behavior:smooth;
 }
 
+body{
 
-/* =======================================
-   DATABASE WINDOW
-======================================= */
+    background:var(--bg);
 
-.database {
+    color:var(--text);
 
-    max-width:1400px;
+    font-family:"VT323", monospace;
 
-    margin:auto;
-
-    background:#ede2cc;
-
-    border:3px solid #3a2b21;
-
-    box-shadow:
-        0 0 0 4px #b89d79,
-        0 15px 45px rgba(0,0,0,.45);
-
-    position:relative;
-
-    overflow:hidden;
-
-    animation:flicker .25s infinite alternate;
-
-    filter:blur(.15px);
-
-}
-
-
-/* =======================================
-   TOP BAR
-======================================= */
-
-.topbar {
-
-    display:flex;
-
-    justify-content:space-between;
-
-    align-items:center;
-
-    padding:12px 18px;
-
-    background:#3a2b21;
-
-    color:#efe3cb;
-
-    border-bottom:3px solid #b89d79;
-
-    font-size:14px;
-
-    letter-spacing:1px;
-
-}
-
-
-.system-title {
-
-    font-family:"Special Elite", cursive;
-
-    font-size:18px;
-
-}
-
-
-.system-version {
-
-    opacity:.8;
-
-}
-
-
-#clock {
-
-    font-weight:bold;
-
-}
-
-
-/* =======================================
-   MAIN GRID
-======================================= */
-
-.main-grid {
-
-    display:grid;
-
-    grid-template-columns:280px 1fr;
-
-    min-height:700px;
-
-}
-
-
-/* =======================================
-   SIDEBAR
-======================================= */
-
-.sidebar {
-
-    background:#dfcfb3;
-
-    border-right:2px solid #b89d79;
+    font-size:22px;
 
     padding:25px;
 
-}
+    overflow-x:hidden;
 
-
-.sidebar-title {
-
-    font-family:"Special Elite", cursive;
-
-    font-size:24px;
-
-    margin-bottom:25px;
-
-    border-bottom:2px solid #8b6c4a;
-
-    padding-bottom:12px;
+    text-shadow:
+    0 0 4px rgba(56,255,117,.3);
 
 }
 
+/* =========================
+   CRT EFFECT
+========================= */
 
-.sidebar nav {
+body::before{
 
-    display:flex;
+content:"";
 
-    flex-direction:column;
+position:fixed;
 
-}
+top:0;
+left:0;
 
+width:100%;
+height:100%;
 
-.sidebar a {
+pointer-events:none;
 
-    color:#2d2118;
+background:
+repeating-linear-gradient(
 
-    text-decoration:none;
+to bottom,
 
-    padding:12px;
+rgba(255,255,255,.02) 0px,
+rgba(255,255,255,.02) 2px,
+transparent 3px,
+transparent 4px
 
-    margin-bottom:10px;
+);
 
-    border:1px solid transparent;
+opacity:.35;
 
-    transition:.2s;
+z-index:999;
 
-}
-
-
-.sidebar a:hover {
-
-    background:#f3ead9;
-
-    border:1px solid #8b6c4a;
-
-    padding-left:18px;
-
-}
-
-
-/* =======================================
-   CONTENT
-======================================= */
-
-.content {
-
-    display:grid;
-
-    grid-template-columns:1fr 1fr;
-
-    gap:20px;
-
-    padding:25px;
+animation:flicker .15s infinite;
 
 }
 
+@keyframes flicker{
 
-/* =======================================
-   PANELS
-======================================= */
-
-.panel {
-
-    background:#f1e7d5;
-
-    border:2px solid #c7b18e;
-
-    padding:20px;
-
-    min-height:220px;
-
-    position:relative;
+0%{opacity:.35;}
+50%{opacity:.28;}
+100%{opacity:.4;}
 
 }
 
+/* =========================
+   GRID
+========================= */
 
-.panel.wide {
+.layout-container{
 
-    grid-column:span 2;
+max-width:1400px;
 
-}
+margin:auto;
 
+display:grid;
 
-.panel-title {
+gap:20px;
 
-    background:#dfcfb3;
-
-    border-bottom:2px solid #c7b18e;
-
-    margin:-20px -20px 20px -20px;
-
-    padding:12px 18px;
-
-    font-family:"Special Elite", cursive;
-
-    font-size:20px;
-
-    letter-spacing:1px;
+grid-template-columns:3fr 1fr;
 
 }
 
+/* =========================
+   WINDOWS
+========================= */
 
-.panel p {
+.window{
 
-    margin-bottom:14px;
+background:var(--window);
 
-    line-height:1.6;
+border:2px solid var(--border);
 
-}
+display:flex;
 
+flex-direction:column;
 
-/* =======================================
-   STATUS BAR
-======================================= */
+box-shadow:
 
-.statusbar {
-
-    display:flex;
-
-    justify-content:space-between;
-
-    background:#3a2b21;
-
-    color:#efe3cb;
-
-    padding:12px 18px;
-
-    border-top:3px solid #b89d79;
-
-    font-size:14px;
+0 0 15px rgba(56,255,117,.15);
 
 }
 
+/* =========================
+   TITLE BAR
+========================= */
 
-/* =======================================
-   CRT SCANLINES
-======================================= */
+.window-header{
 
-.database::after {
+background:var(--header);
 
-    content:"";
+color:var(--header-text);
 
-    position:absolute;
+padding:8px 14px;
 
-    inset:0;
+display:flex;
 
-    pointer-events:none;
+justify-content:space-between;
 
-    background:
+align-items:center;
 
-    repeating-linear-gradient(
-        to bottom,
-        rgba(255,255,255,.025) 0px,
-        rgba(255,255,255,.025) 1px,
-        rgba(0,0,0,.04) 2px,
-        rgba(0,0,0,.04) 3px
-    );
+font-weight:bold;
 
-    opacity:.6;
+letter-spacing:1px;
 
-    z-index:10;
+font-size:18px;
+
+text-transform:uppercase;
 
 }
 
+/* =========================
+   BUTTONS
+========================= */
 
-/* =======================================
-   FILM GRAIN
-======================================= */
+.window-controls{
 
-body::before {
+display:flex;
 
-    content:"";
-
-    position:fixed;
-
-    inset:0;
-
-    background-image:url("../filmgrain.png");
-
-    background-repeat:repeat;
-
-    opacity:.18;
-
-    pointer-events:none;
-
-    mix-blend-mode:multiply;
-
-    z-index:9999;
+gap:6px;
 
 }
 
+.window-btn{
 
-/* =======================================
-   FLICKER EFFECT
-======================================= */
+width:15px;
 
-@keyframes flicker {
+height:15px;
 
-    0% {
+border:1px solid #000;
 
-        opacity:.97;
-
-    }
-
-    20% {
-
-        opacity:1;
-
-    }
-
-    40% {
-
-        opacity:.96;
-
-    }
-
-    60% {
-
-        opacity:.99;
-
-    }
-
-    80% {
-
-        opacity:.95;
-
-    }
-
-    100% {
-
-        opacity:.98;
-
-    }
+background:#38ff75;
 
 }
 
+/* =========================
+   WINDOW CONTENT
+========================= */
 
-/* =======================================
-   RESPONSIVE
-======================================= */
+.window-body{
 
-@media(max-width:900px) {
+background:var(--panel);
 
+padding:18px;
 
-.main-grid {
+border-top:1px solid var(--border);
 
-    grid-template-columns:1fr;
-
-}
-
-
-.sidebar {
-
-    border-right:none;
-
-    border-bottom:2px solid #b89d79;
+flex-grow:1;
 
 }
 
+/* =========================
+   BANNER
+========================= */
 
-.content {
+.banner{
 
-    grid-template-columns:1fr;
+height:180px;
+
+border:2px solid var(--border);
+
+background:
+
+url("images/archive-banner.jpg")
+
+center/cover;
+
+margin-bottom:20px;
+
+filter:
+
+grayscale(100%)
+
+contrast(130%)
+
+brightness(.55);
 
 }
 
+/* =========================
+   TITLE
+========================= */
 
-.panel.wide {
+.site-title{
 
-    grid-column:span 1;
+font-size:72px;
+
+line-height:.9;
+
+color:var(--border);
+
+text-transform:uppercase;
+
+text-shadow:
+
+0 0 10px rgba(56,255,117,.5);
 
 }
 
+/* =========================
+   PROFILE
+========================= */
 
-.statusbar {
+.profile-section{
 
-    flex-direction:column;
+display:flex;
 
-    gap:8px;
+align-items:center;
+
+gap:30px;
+
+margin-bottom:30px;
 
 }
 
+.profile-mask{
+
+width:170px;
+
+height:170px;
+
+border:2px solid var(--border);
+
+background:#000;
+
+}
+
+/* =========================
+   TEXT BOX
+========================= */
+
+.text-container{
+
+border:2px solid var(--border);
+
+padding:20px;
+
+background:#080808;
+
+line-height:1.5;
+
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+.nav-list{
+
+list-style:none;
+
+display:flex;
+
+flex-direction:column;
+
+gap:10px;
+
+}
+
+.nav-link{
+
+display:flex;
+
+align-items:center;
+
+gap:12px;
+
+padding:8px;
+
+color:var(--text);
+
+text-decoration:none;
+
+border:1px solid transparent;
+
+transition:.2s;
+
+}
+
+.nav-link:hover{
+
+background:var(--border);
+
+color:#000;
+
+border-color:var(--border);
+
+}
+
+/* =========================
+   LINKS
+========================= */
+
+a{
+
+color:var(--border);
+
+text-decoration:none;
+
+}
+
+a:hover{
+
+background:var(--border);
+
+color:#000;
+
+}
+
+/* =========================
+   SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#000;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:var(--border);
+
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer{
+
+margin-top:25px;
+
+padding-top:15px;
+
+border-top:2px solid var(--border);
+
+text-align:center;
+
+font-size:20px;
+
+}
+
+/* =========================
+   TERMINAL CURSOR
+========================= */
+
+.cursor{
+
+animation:blink 1s infinite;
+
+}
+
+@keyframes blink{
+
+0%,50%{
+
+opacity:1;
+
+}
+
+51%,100%{
+
+opacity:0;
+
+}
 
 }
