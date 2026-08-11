@@ -1,279 +1,938 @@
-<!DOCTYPE html>
-<html lang="en">
+/* ==========================================
+   MAGNUS INSTITUTE ARCHIVE
+   BLACK + DARK GREEN THEME
+   ORIGINAL MONOCHROME OS LAYOUT PRESERVED
+========================================== */
 
-<head>
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+/* ==========================================
+   RESET
+========================================== */
 
-    <title>Magnus Institute // Archive Database</title>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    <!-- Main stylesheet -->
-    <link rel="stylesheet" href="css/style.css">
+/* ==========================================
+   CURSORS
+========================================== */
 
-    <!-- Terminal font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+*, html, body, textarea, input, p, span, div, img {
+    cursor: url("https://cdn.cursors-4u.net/previews/boo-mario-f54cafb3-32.webp") 32 32, default !important;
+}
 
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+a, a *, button, .window-btn, [role="button"] {
+    cursor: url("https://cdn.cursors-4u.net/previews/boo-link-select-91739595-32.webp") 32 32, pointer !important;
+}
 
-</head>
+/* ==========================================
+   SELECTION
+========================================== */
 
-<body>
+::selection {
+    background-color: #173d27;
+    color: #b7ffca;
+}
 
-<div class="database">
+::-moz-selection {
+    background-color: #173d27;
+    color: #b7ffca;
+}
 
-    <!-- =========================
-         TOP BAR
-    ========================== -->
+/* ==========================================
+   BODY
+========================================== */
 
-    <header class="topbar">
+body {
 
-        <div class="system-title">
-            MAGNUS INSTITUTE // ARCHIVE DATABASE
-        </div>
+    background-color: #020603;
 
-        <div class="system-version">
-            ARCHIVE TERMINAL v3.2.17
-        </div>
+    background-image:
+        linear-gradient(rgba(20, 65, 35, 0.25) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(20, 65, 35, 0.25) 1px, transparent 1px);
 
-        <div id="clock">
-            00-00-0000 00:00
-        </div>
+    background-size: 20px 20px;
 
-    </header>
+    font-family: 'VT323', monospace;
 
+    color: #8fbd9c;
 
-    <!-- =========================
-         MAIN CONTENT
-    ========================== -->
+    padding: 20px;
 
-    <main class="main-grid">
+    font-size: 18px;
 
+}
 
-        <!-- =========================
-             LEFT MENU
-        ========================== -->
+/* ==========================================
+   SCROLLBAR
+========================================== */
 
-        <aside class="sidebar">
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
 
-            <div class="sidebar-title">
-                ARCHIVE INDEX
-            </div>
+::-webkit-scrollbar-track {
 
-            <nav>
+    background: #030804;
 
-                <a href="pages/statements.html">
-                    ► STATEMENTS
-                </a>
+    border-left: 2px solid #234d31;
+    border-top: 2px solid #234d31;
 
-                <a href="pages/characters.html">
-                    ► PERSONS
-                </a>
+}
 
-                <a href="pages/entities.html">
-                    ► ENTITIES
-                </a>
+::-webkit-scrollbar-thumb {
 
-                <a href="pages/timeline.html">
-                    ► TIMELINE
-                </a>
+    background: #275c38;
 
-                <a href="pages/about.html">
-                    ► ABOUT THE ARCHIVE
-                </a>
+    border: 1px solid #07150b;
 
-            </nav>
+}
 
-        </aside>
+/* ==========================================
+   ORIGINAL GRID
+========================================== */
 
+.layout-container {
 
-        <!-- =========================
-             MAIN CONTENT
-        ========================== -->
+    display: grid;
 
-        <section class="content">
+    max-width: 1200px;
 
+    margin: 0 auto;
 
-            <!-- INTRODUCTION -->
+    gap: 20px;
 
-            <section class="panel">
+    grid-template-columns: repeat(3, 1fr) 320px;
 
-                <div class="panel-title">
-                    MAGNUS ARCHIVE
-                </div>
+    grid-template-rows: auto auto auto;
 
-                <p>
-                    Welcome to the digital archive of the Magnus Institute, London.
-                </p>
+    grid-template-areas:
+        "main main main cam"
+        "main main main chat"
+        "follower sub dono chat";
 
-                <p>
-                    This database contains records relating to statements,
-                    persons, locations and entities of archival interest.
-                </p>
+}
 
-                <p>
-                    Statements are catalogued according to their original
-                    archival designation. Cross-referencing between statements
-                    may reveal recurring individuals, locations or phenomena.
-                </p>
+/* ==========================================
+   WINDOWS
+========================================== */
 
-            </section>
+.window {
 
+    background: #050a06;
 
-            <!-- WARNING -->
+    border-radius: 8px;
 
-            <section class="panel warning">
+    display: flex;
 
-                <div class="panel-title">
-                    ARCHIVAL WARNING
-                </div>
+    flex-direction: column;
 
-                <p>
-                    WARNING: Some archival materials may contain disturbing
-                    or otherwise sensitive subject matter.
-                </p>
+    box-shadow:
+        4px 4px 0px rgba(0, 0, 0, 0.7),
+        0 0 12px rgba(35, 100, 55, 0.12);
 
-                <p>
-                    Proceed with appropriate caution.
-                </p>
+    overflow: hidden;
 
-            </section>
+}
 
+/* ==========================================
+   WINDOW HEADER
+========================================== */
 
-            <!-- STATUS -->
+.window-header {
 
-            <section class="panel">
+    background: #173d27;
 
-                <div class="panel-title">
-                    SYSTEM STATUS
-                </div>
+    color: #b7ffca;
 
-                <p>
-                    Current database status:
-                    <span class="online">ONLINE</span>
-                </p>
+    padding: 8px 12px;
 
-                <p>
-                    Institute Location: LONDON
-                </p>
+    display: flex;
 
-                <p>
-                    Access Level: PUBLIC
-                </p>
+    justify-content: space-between;
 
-                <p>
-                    Network Connection:
-                    <span class="online">ESTABLISHED</span>
-                </p>
+    align-items: center;
 
-            </section>
+    font-family: 'Courier New', Courier, monospace;
 
+    font-weight: bold;
 
-            <!-- ARCHIVE TERMINAL -->
+    font-size: 14px;
 
-            <section class="panel wide">
+    letter-spacing: 1px;
 
-                <div class="panel-title">
-                    ARCHIVE TERMINAL
-                </div>
+    text-transform: uppercase;
 
-                <p>
-                    This terminal is connected to the Magnus Institute
-                    archival network.
-                </p>
+}
 
-                <p>
-                    Please consult the relevant case file before accessing
-                    restricted material.
-                </p>
+/* ==========================================
+   WINDOW CONTROLS
+========================================== */
 
-                <div class="terminal-log">
+.window-controls {
 
-                    <p>
-                        <span>[SYSTEM]</span>
-                        Database initialised.
-                    </p>
+    display: flex;
 
-                    <p>
-                        <span>[SYSTEM]</span>
-                        Public access terminal online.
-                    </p>
+    gap: 4px;
 
-                    <p>
-                        <span>[ARCHIVE]</span>
-                        Statement indexing awaiting completion.
-                    </p>
+}
 
-                    <p>
-                        <span>[NOTICE]</span>
-                        Cross-referencing system under development.
-                    </p>
+.window-btn {
 
-                    <p class="warning-text">
-                        <span>[WARNING]</span>
-                        Unidentified archival activity detected.
-                    </p>
+    width: 16px;
 
-                </div>
+    height: 16px;
 
-            </section>
+    border: 1px solid #75b987;
 
+    background: #07140b;
 
-            <!-- CASE FILES -->
+    display: flex;
 
-            <section class="panel wide">
+    align-items: center;
 
-                <div class="panel-title">
-                    CASE FILES
-                </div>
+    justify-content: center;
 
-                <div class="case-files">
+}
 
-                    <a href="pages/statements.html">
-                        [ STATEMENTS ]
-                    </a>
+.window-btn.min::after {
 
-                    <a href="pages/characters.html">
-                        [ PERSONS ]
-                    </a>
+    content: "";
 
-                    <a href="pages/entities.html">
-                        [ ENTITIES ]
-                    </a>
+    width: 8px;
 
-                </div>
+    height: 2px;
 
-            </section>
+    background: #75b987;
 
+    margin-top: 8px;
 
-        </section>
+}
 
-    </main>
+.window-btn.max::after {
 
+    content: "";
 
-    <!-- =========================
-         FOOTER / STATUS BAR
-    ========================== -->
+    width: 8px;
 
-    <footer class="statusbar">
+    height: 8px;
 
-        <span>
-            MAGNUS INSTITUTE ARCHIVAL NETWORK
-        </span>
+    border: 1px solid #75b987;
 
-        <span>
-            ● ARCHIVE ONLINE
-        </span>
+}
 
-    </footer>
+.window-btn.close::after {
 
+    content: "X";
 
-</div>
+    color: #75b987;
 
+    font-size: 10px;
 
-<script src="js/script.js"></script>
+    font-family: Arial, sans-serif;
 
-</body>
+    font-weight: bold;
 
-</html>
+}
+
+/* ==========================================
+   WINDOW BODY
+========================================== */
+
+.window-body {
+
+    background: #09110c;
+
+    margin: 0 6px 6px 6px;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    position: relative;
+
+}
+
+/* ==========================================
+   MAIN WINDOW
+========================================== */
+
+.main-container {
+
+    grid-area: main;
+
+    height: 730px;
+
+}
+
+.main-container .window-body {
+
+    overflow-y: auto;
+
+    flex-grow: 1;
+
+}
+
+/* ==========================================
+   BANNER
+========================================== */
+
+.banner {
+
+    width: 100%;
+
+    height: 140px;
+
+    background:
+        linear-gradient(
+            rgba(2, 10, 5, 0.45),
+            rgba(2, 10, 5, 0.65)
+        ),
+        url('https://i.pinimg.com/webp85/1200x/41/c2/fd/41c2fd79179ae20a9b5aa76a91fa4291.webp')
+        center/cover;
+
+    margin-bottom: 20px;
+
+    border: 1px solid #315d3c;
+
+    filter:
+        grayscale(100%)
+        sepia(20%)
+        brightness(0.55);
+
+}
+
+/* ==========================================
+   PROFILE
+========================================== */
+
+.profile-section {
+
+    display: flex;
+
+    align-items: flex-end;
+
+    gap: 30px;
+
+    margin-bottom: 0px;
+
+    padding-left: 10px;
+
+}
+
+.profile-mask {
+
+    width: 180px;
+
+    height: 180px;
+
+    flex-shrink: 0;
+
+    margin-top: -80px;
+
+    position: relative;
+
+    z-index: 10;
+
+    -webkit-mask-image:
+        url('https://i.postimg.cc/7YMf2khC/IMG-1350.png');
+
+    -webkit-mask-size: contain;
+
+    -webkit-mask-repeat: no-repeat;
+
+    -webkit-mask-position: center;
+
+    mask-image:
+        url('https://i.postimg.cc/7YMf2khC/IMG-1350.png');
+
+    mask-size: contain;
+
+    mask-repeat: no-repeat;
+
+    mask-position: center;
+
+    background-image:
+        linear-gradient(
+            rgba(10, 55, 28, 0.25),
+            rgba(0, 0, 0, 0.5)
+        ),
+        url('https://i.pinimg.com/736x/c8/ea/ca/c8eacab3969cb56d76ea7c6860798d72.jpg');
+
+    background-size: cover;
+
+    background-position: center;
+
+}
+
+/* ==========================================
+   SITE TITLE
+========================================== */
+
+.site-title {
+
+    font-size: 70px;
+
+    font-weight: bold;
+
+    text-transform: uppercase;
+
+    color: #75b987;
+
+    text-shadow:
+        2px 2px 0px #020603,
+        0 0 8px rgba(60, 130, 75, 0.35);
+
+    line-height: 1.0;
+
+    margin-bottom: 30px;
+
+}
+
+/* ==========================================
+   STAMPS + TEXT
+========================================== */
+
+.stamps-text-section {
+
+    display: flex;
+
+    gap: 25px;
+
+    align-items: flex-start;
+
+    margin-bottom: 20px;
+
+}
+
+.stamps-container {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 11px;
+
+    width: 120px;
+
+    flex-shrink: 0;
+
+}
+
+.stamp {
+
+    width: 135px;
+
+    height: auto;
+
+    border: 1px solid #315d3c;
+
+    filter:
+        grayscale(100%)
+        sepia(20%)
+        brightness(0.7);
+
+}
+
+/* ==========================================
+   MAIN TEXT BOX
+========================================== */
+
+.text-container {
+
+    flex-grow: 1;
+
+    font-size: 22px;
+
+    line-height: 1.4;
+
+    border: 2px dashed #315d3c;
+
+    padding: 15px;
+
+    background: #07100a;
+
+    color: #8fbd9c;
+
+}
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.footer {
+
+    text-align: center;
+
+    border-top: 2px solid #315d3c;
+
+    padding-top: 15px;
+
+    font-weight: bold;
+
+    margin-top: 20px;
+
+    font-size: 20px;
+
+    color: #75b987;
+
+}
+
+/* ==========================================
+   RIGHT NAVIGATION
+========================================== */
+
+.cam-container {
+
+    grid-area: cam;
+
+}
+
+.cam-container .window-body {
+
+    height: 200px;
+
+    overflow-y: auto;
+
+}
+
+.nav-list {
+
+    list-style: none;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+}
+
+.nav-link {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    text-decoration: none;
+
+    color: #8fbd9c;
+
+    font-size: 22px;
+
+    font-weight: bold;
+
+    transition: all 0.3s ease;
+
+    padding: 3px 5px;
+
+}
+
+.nav-link img {
+
+    width: 26px;
+
+    height: 26px;
+
+    object-fit: contain;
+
+    transition: transform 0.3s ease;
+
+}
+
+.nav-link:hover {
+
+    background-color: #315d3c !important;
+
+    color: #020603 !important;
+
+    transform: translateX(8px);
+
+    border-radius: 5px;
+
+}
+
+.nav-link:hover img {
+
+    transform: rotate(15deg) scale(1.2);
+
+    filter: brightness(0.3) sepia(1) saturate(2);
+
+}
+
+/* ==========================================
+   CHAT / ARCHIVE PANEL
+========================================== */
+
+.chat-container {
+
+    grid-area: chat;
+
+    display: flex;
+
+    flex-direction: column;
+
+    height: 100%;
+
+}
+
+.chat-container .window-body {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+
+    padding: 10px;
+
+    flex-grow: 1;
+
+}
+
+/* ==========================================
+   ARCHIVE / WEBRING BOX
+========================================== */
+
+.webrings-box {
+
+    height: 275px;
+
+    overflow-y: auto;
+
+    border: 1px dotted #315d3c;
+
+    padding: 10px;
+
+    flex-shrink: 0;
+
+    color: #8fbd9c;
+
+}
+
+.update-log-box {
+
+    overflow-y: auto;
+
+    border: 1px dotted #315d3c;
+
+    padding: 10px;
+
+    min-height: 260px;
+
+    color: #8fbd9c;
+
+}
+
+.chat-container h3 {
+
+    border-bottom: 1px solid #315d3c;
+
+    margin-bottom: 10px;
+
+    font-size: 18px;
+
+    color: #75b987;
+
+}
+
+/* ==========================================
+   MINI WINDOWS
+========================================== */
+
+.mini-left {
+
+    grid-area: follower;
+
+}
+
+.mini-center {
+
+    grid-area: sub;
+
+}
+
+.mini-right {
+
+    grid-area: dono;
+
+}
+
+.mini-window-body {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding: 8px;
+
+    height: 65px;
+
+}
+
+/* ==========================================
+   FOUR LINKS
+========================================== */
+
+.four-links-grid {
+
+    display: flex;
+
+    flex-direction: row;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    width: 100%;
+
+    gap: 5px;
+
+}
+
+.four-links-grid a {
+
+    display: block;
+
+    width: 45px;
+
+    height: 45px;
+
+}
+
+.four-links-grid a img {
+
+    width: 45px;
+
+    height: 45px;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 2px solid #315d3c;
+
+    transition: transform 0.2s;
+
+    filter: grayscale(100%) sepia(30%) brightness(0.75);
+
+}
+
+.four-links-grid a:hover img {
+
+    transform: scale(1.1);
+
+}
+
+/* ==========================================
+   WEB BUTTON
+========================================== */
+
+.web-button-container {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    width: 100%;
+
+}
+
+.web-button {
+
+    width: 88px;
+
+    height: 31px;
+
+    border: 1px solid #315d3c;
+
+    flex-shrink: 0;
+
+}
+
+.code-box {
+
+    flex-grow: 1;
+
+    height: 45px;
+
+    font-family: monospace;
+
+    font-size: 11px;
+
+    resize: none;
+
+    overflow-y: auto;
+
+    border: 1px solid #315d3c;
+
+    padding: 4px;
+
+    background: #020603;
+
+    color: #75b987;
+
+}
+
+/* ==========================================
+   COUNTER
+========================================== */
+
+.counter-container {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    width: 100%;
+
+}
+
+/* ==========================================
+   LINKS
+========================================== */
+
+a {
+
+    color: #75b987;
+
+    text-decoration: none;
+
+    border-bottom: 2px dashed #315d3c;
+
+    font-weight: bold;
+
+    padding: 0 2px;
+
+    transition:
+        background-color 0.1s ease,
+        color 0.1s ease;
+
+}
+
+a:hover {
+
+    background-color: #315d3c;
+
+    color: #020603;
+
+    border-bottom-style: solid;
+
+}
+
+a:visited {
+
+    color: #75b987;
+
+}
+
+/* ==========================================
+   LINK BUTTON
+========================================== */
+
+.link-botao {
+
+    display: inline-block;
+
+    border: 2px solid #315d3c;
+
+    background-color: #07100a;
+
+    padding: 4px 8px;
+
+    box-shadow: 2px 2px 0px #020603;
+
+    border-bottom: 2px solid #315d3c;
+
+}
+
+.link-botao:hover {
+
+    background-color: #315d3c;
+
+    color: #020603;
+
+    box-shadow: none;
+
+    transform: translate(2px, 2px);
+
+}
+
+/* ==========================================
+   IMAGE LINKS
+========================================== */
+
+a:has(img),
+a:has(picture),
+.four-links-grid a,
+.counter-container a,
+.web-button-container a {
+
+    border-bottom: none !important;
+
+    padding: 0 !important;
+
+    background-color: transparent !important;
+
+}
+
+a:hover:has(img),
+.four-links-grid a:hover,
+.counter-container a:hover,
+.web-button-container a:hover {
+
+    background-color: transparent !important;
+
+    color: inherit !important;
+
+}
+
+.four-links-grid img,
+.web-button,
+.counter-container img {
+
+    border-bottom: none;
+
+}
+
+/* ==========================================
+   NAV LINK OVERRIDES
+========================================== */
+
+.nav-link {
+
+    border-bottom: none !important;
+
+    padding: 3px 5px !important;
+
+    display: flex !important;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+.nav-link:hover {
+
+    background-color: #315d3c !important;
+
+    color: #020603 !important;
+
+    border-bottom: none !important;
+
+    border-radius: 5px;
+
+}
