@@ -1,30 +1,30 @@
 /* ==========================================
    MAGNUS INSTITUTE ARCHIVE
-   BLACK / DARK GREEN TERMINAL THEME
+   TERMINAL DATABASE
 ========================================== */
-
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 
 /* ==========================================
-   COLOUR PALETTE
+   COLOURS
 ========================================== */
 
 :root {
 
-    --black: #030503;
+    --black: #030403;
 
-    --darkest-green: #061006;
+    --dark-green: #071a0d;
 
-    --dark-green: #0b1c0d;
+    --panel-green: #0a2111;
 
-    --green: #164d24;
+    --green: #1f8f46;
 
-    --bright-green: #38a653;
+    --bright-green: #39c965;
 
-    --terminal-green: #7dce86;
+    --text: #8bcf9d;
 
-    --text: #8fce96;
+    --dim-text: #4f825c;
+
+    --border: #176b32;
 
 }
 
@@ -35,11 +35,11 @@
 
 * {
 
-    box-sizing: border-box;
-
     margin: 0;
 
     padding: 0;
+
+    box-sizing: border-box;
 
 }
 
@@ -48,37 +48,31 @@
    BODY
 ========================================== */
 
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
 body {
 
-    background-color: var(--black);
-
-    background-image:
-
-        linear-gradient(
-            rgba(22, 77, 36, 0.18) 1px,
-            transparent 1px
-        ),
-
-        linear-gradient(
-            90deg,
-            rgba(22, 77, 36, 0.18) 1px,
-            transparent 1px
-        );
-
-    background-size: 20px 20px;
+    background: var(--black);
 
     color: var(--text);
 
-    font-family: 'VT323', monospace;
+    font-family: "VT323", monospace;
 
-    font-size: 18px;
+    font-size: 21px;
 
-    padding: 20px;
+    padding: 25px;
 
     min-height: 100vh;
 
+    overflow-x: hidden;
+
     text-shadow:
-        0 0 3px rgba(56, 166, 83, 0.25);
+        0 0 3px rgba(57, 201, 101, 0.25);
 
 }
 
@@ -100,7 +94,6 @@ body::before {
     z-index: 9999;
 
     background:
-
         repeating-linear-gradient(
             to bottom,
             rgba(255,255,255,0.025) 0px,
@@ -109,20 +102,430 @@ body::before {
             transparent 4px
         );
 
-    opacity: 0.35;
+    opacity: .35;
 
 }
 
 
 /* ==========================================
-   SELECTION
+   SCREEN VIGNETTE
 ========================================== */
 
-::selection {
+body::after {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 9998;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 50%,
+            rgba(0,0,0,.65) 100%
+        );
+
+}
+
+
+/* ==========================================
+   MAIN DATABASE
+========================================== */
+
+.database {
+
+    max-width: 1400px;
+
+    margin: 0 auto;
+
+    border: 2px solid var(--border);
+
+    background: var(--black);
+
+    box-shadow:
+        0 0 20px rgba(31,143,70,.15);
+
+}
+
+
+/* ==========================================
+   TOP BAR
+========================================== */
+
+.topbar {
+
+    min-height: 55px;
+
+    background: var(--dark-green);
+
+    border-bottom: 2px solid var(--green);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: 10px 15px;
+
+    gap: 20px;
+
+}
+
+
+/* Main title */
+
+.system-title {
+
+    color: var(--bright-green);
+
+    font-size: 27px;
+
+    letter-spacing: 2px;
+
+    text-shadow:
+        0 0 7px rgba(57,201,101,.45);
+
+}
+
+
+/* Version */
+
+.system-version {
+
+    color: var(--dim-text);
+
+    font-size: 17px;
+
+}
+
+
+/* Clock */
+
+#clock {
+
+    color: var(--bright-green);
+
+    font-size: 19px;
+
+    white-space: nowrap;
+
+}
+
+
+/* ==========================================
+   MAIN GRID
+========================================== */
+
+.main-grid {
+
+    display: grid;
+
+    grid-template-columns: 230px 1fr;
+
+    min-height: 700px;
+
+}
+
+
+/* ==========================================
+   SIDEBAR
+========================================== */
+
+.sidebar {
+
+    background: #020302;
+
+    border-right: 2px solid var(--border);
+
+    padding: 20px;
+
+}
+
+
+.sidebar-title {
+
+    color: var(--bright-green);
+
+    font-size: 25px;
+
+    border-bottom: 1px solid var(--green);
+
+    padding-bottom: 10px;
+
+    margin-bottom: 20px;
+
+}
+
+
+/* ==========================================
+   NAVIGATION
+========================================== */
+
+.sidebar nav {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+}
+
+
+.sidebar a {
+
+    display: block;
+
+    color: var(--text);
+
+    text-decoration: none;
+
+    padding: 8px;
+
+    border: 1px solid transparent;
+
+    transition: .15s ease;
+
+}
+
+
+.sidebar a:hover {
+
+    color: #000;
 
     background: var(--bright-green);
 
-    color: var(--black);
+    border-color: var(--bright-green);
+
+    text-shadow: none;
+
+}
+
+
+/* ==========================================
+   CONTENT
+========================================== */
+
+.content {
+
+    padding: 20px;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 15px;
+
+    align-content: start;
+
+}
+
+
+/* ==========================================
+   PANELS
+========================================== */
+
+.panel {
+
+    background: var(--panel-green);
+
+    border: 1px solid var(--border);
+
+    padding: 18px;
+
+    min-height: 150px;
+
+}
+
+
+.panel.wide {
+
+    grid-column: 1 / -1;
+
+}
+
+
+/* ==========================================
+   PANEL TITLES
+========================================== */
+
+.panel-title {
+
+    color: var(--bright-green);
+
+    font-size: 24px;
+
+    border-bottom: 1px solid var(--green);
+
+    padding-bottom: 7px;
+
+    margin-bottom: 15px;
+
+    letter-spacing: 1px;
+
+}
+
+
+/* ==========================================
+   PARAGRAPHS
+========================================== */
+
+.panel p {
+
+    margin-bottom: 12px;
+
+    line-height: 1.35;
+
+}
+
+
+/* ==========================================
+   WARNING PANEL
+========================================== */
+
+.warning {
+
+    border-color: #3d713f;
+
+}
+
+
+.warning .panel-title {
+
+    color: #6ebc76;
+
+}
+
+
+.warning-text {
+
+    color: #75c981;
+
+}
+
+
+/* ==========================================
+   ONLINE STATUS
+========================================== */
+
+.online {
+
+    color: var(--bright-green);
+
+    text-shadow:
+        0 0 7px rgba(57,201,101,.6);
+
+}
+
+
+/* ==========================================
+   TERMINAL LOG
+========================================== */
+
+.terminal-log {
+
+    margin-top: 18px;
+
+    padding: 12px;
+
+    background: #020402;
+
+    border: 1px solid var(--border);
+
+    font-size: 19px;
+
+}
+
+
+.terminal-log p {
+
+    margin-bottom: 6px;
+
+}
+
+
+.terminal-log span {
+
+    color: var(--bright-green);
+
+}
+
+
+/* ==========================================
+   CASE FILE LINKS
+========================================== */
+
+.case-files {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 12px;
+
+}
+
+
+.case-files a {
+
+    color: var(--bright-green);
+
+    text-decoration: none;
+
+    border: 1px solid var(--border);
+
+    padding: 8px 12px;
+
+    background: #020402;
+
+}
+
+
+.case-files a:hover {
+
+    background: var(--bright-green);
+
+    color: #000;
+
+    text-shadow: none;
+
+}
+
+
+/* ==========================================
+   FOOTER
+========================================== */
+
+.statusbar {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 9px 15px;
+
+    background: var(--dark-green);
+
+    border-top: 2px solid var(--border);
+
+    color: var(--dim-text);
+
+    font-size: 18px;
+
+}
+
+
+.statusbar span:last-child {
+
+    color: var(--bright-green);
 
 }
 
@@ -135,905 +538,41 @@ body::before {
 
     width: 10px;
 
-    height: 10px;
-
 }
+
 
 ::-webkit-scrollbar-track {
 
-    background: var(--black);
-
-    border-left: 2px solid var(--green);
-
-    border-top: 2px solid var(--green);
+    background: #020302;
 
 }
+
 
 ::-webkit-scrollbar-thumb {
 
     background: var(--green);
 
-    border: 1px solid var(--bright-green);
+    border: 2px solid #020302;
+
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+
+    background: var(--bright-green);
 
 }
 
 
 /* ==========================================
-   MAIN GRID
+   TEXT SELECTION
 ========================================== */
 
-.layout-container {
+::selection {
 
-    display: grid;
+    background: var(--bright-green);
 
-    max-width: 1200px;
-
-    margin: 0 auto;
-
-    gap: 20px;
-
-    grid-template-columns:
-        repeat(3, 1fr)
-        320px;
-
-    grid-template-rows:
-        auto
-        auto
-        auto;
-
-    grid-template-areas:
-
-        "main main main cam"
-
-        "main main main chat"
-
-        "follower sub dono chat";
-
-}
-
-
-/* ==========================================
-   WINDOWS
-========================================== */
-
-.window {
-
-    background: var(--darkest-green);
-
-    border: 2px solid var(--green);
-
-    border-radius: 0;
-
-    display: flex;
-
-    flex-direction: column;
-
-    box-shadow:
-
-        0 0 8px rgba(22, 77, 36, 0.3),
-
-        inset 0 0 15px rgba(0,0,0,0.7);
-
-    overflow: hidden;
-
-}
-
-
-/* ==========================================
-   WINDOW HEADER
-========================================== */
-
-.window-header {
-
-    background: var(--green);
-
-    color: var(--terminal-green);
-
-    padding: 8px 12px;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    font-family: 'VT323', monospace;
-
-    font-weight: bold;
-
-    font-size: 17px;
-
-    letter-spacing: 1px;
-
-    text-transform: uppercase;
-
-    border-bottom: 2px solid var(--bright-green);
-
-}
-
-
-/* ==========================================
-   WINDOW CONTROLS
-========================================== */
-
-.window-controls {
-
-    display: flex;
-
-    gap: 4px;
-
-}
-
-.window-btn {
-
-    width: 16px;
-
-    height: 16px;
-
-    border: 1px solid var(--bright-green);
-
-    background: var(--black);
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-}
-
-
-/* MINIMISE */
-
-.window-btn.min::after {
-
-    content: "";
-
-    width: 8px;
-
-    height: 2px;
-
-    background: var(--terminal-green);
-
-}
-
-
-/* MAXIMISE */
-
-.window-btn.max::after {
-
-    content: "";
-
-    width: 8px;
-
-    height: 8px;
-
-    border: 1px solid var(--terminal-green);
-
-}
-
-
-/* CLOSE */
-
-.window-btn.close::after {
-
-    content: "X";
-
-    color: var(--terminal-green);
-
-    font-size: 10px;
-
-    font-family: monospace;
-
-    font-weight: bold;
-
-}
-
-
-/* ==========================================
-   WINDOW BODY
-========================================== */
-
-.window-body {
-
-    background: var(--dark-green);
-
-    color: var(--text);
-
-    margin: 0 6px 6px 6px;
-
-    border-radius: 0;
-
-    padding: 15px;
-
-    position: relative;
-
-}
-
-
-/* ==========================================
-   MAIN WINDOW
-========================================== */
-
-.main-container {
-
-    grid-area: main;
-
-    height: 730px;
-
-}
-
-.main-container .window-body {
-
-    overflow-y: auto;
-
-    flex-grow: 1;
-
-}
-
-
-/* ==========================================
-   BANNER
-========================================== */
-
-.banner {
-
-    width: 100%;
-
-    height: 140px;
-
-    background:
-
-        linear-gradient(
-            rgba(0,20,5,0.55),
-            rgba(0,20,5,0.55)
-        ),
-
-        url('https://i.pinimg.com/webp85/1200x/41/c2/fd/41c2fd79179ae20a9b5aa76a91fa4291.webp')
-        center/cover;
-
-    margin-bottom: 20px;
-
-    border: 1px solid var(--green);
-
-    filter:
-
-        grayscale(100%)
-
-        contrast(130%)
-
-        brightness(0.55)
-
-        sepia(30%);
-
-}
-
-
-/* ==========================================
-   PROFILE / TITLE
-========================================== */
-
-.profile-section {
-
-    display: flex;
-
-    align-items: flex-end;
-
-    gap: 30px;
-
-    margin-bottom: 0;
-
-    padding-left: 10px;
-
-}
-
-.profile-mask {
-
-    width: 180px;
-
-    height: 180px;
-
-    flex-shrink: 0;
-
-    margin-top: -80px;
-
-    position: relative;
-
-    z-index: 10;
-
-    border: 2px solid var(--green);
-
-    background-color: var(--black);
-
-    -webkit-mask-image:
-        url('https://i.postimg.cc/7YMf2khC/IMG-1350.png');
-
-    -webkit-mask-size: contain;
-
-    -webkit-mask-repeat: no-repeat;
-
-    -webkit-mask-position: center;
-
-    mask-image:
-        url('https://i.postimg.cc/7YMf2khC/IMG-1350.png');
-
-    mask-size: contain;
-
-    mask-repeat: no-repeat;
-
-    mask-position: center;
-
-    background-image:
-
-        linear-gradient(
-            rgba(10,60,20,0.4),
-            rgba(0,0,0,0.7)
-        ),
-
-        url('https://i.pinimg.com/736x/c8/ea/ca/c8eacab3969cb56d76ea7c6860798d72.jpg');
-
-    background-size: cover;
-
-    background-position: center;
-
-}
-
-
-/* ==========================================
-   SITE TITLE
-========================================== */
-
-.site-title {
-
-    font-size: 70px;
-
-    font-weight: bold;
-
-    text-transform: uppercase;
-
-    color: var(--terminal-green);
-
-    text-shadow:
-
-        0 0 5px rgba(56,166,83,0.5),
-
-        2px 2px 0 var(--black);
-
-    line-height: 1;
-
-    margin-bottom: 30px;
-
-}
-
-
-/* ==========================================
-   STAMPS + TEXT
-========================================== */
-
-.stamps-text-section {
-
-    display: flex;
-
-    gap: 25px;
-
-    align-items: flex-start;
-
-    margin-bottom: 20px;
-
-}
-
-
-.stamps-container {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 11px;
-
-    width: 120px;
-
-    flex-shrink: 0;
-
-}
-
-
-.stamp {
-
-    width: 135px;
-
-    height: auto;
-
-    border: 1px solid var(--green);
-
-    filter:
-
-        grayscale(100%)
-
-        sepia(100%)
-
-        hue-rotate(70deg)
-
-        saturate(50%);
-
-}
-
-
-/* ==========================================
-   MAIN TEXT
-========================================== */
-
-.text-container {
-
-    flex-grow: 1;
-
-    font-size: 22px;
-
-    line-height: 1.4;
-
-    border: 2px dashed var(--green);
-
-    padding: 15px;
-
-    background: var(--darkest-green);
-
-    color: var(--text);
-
-}
-
-
-/* ==========================================
-   TERMINAL TEXT
-========================================== */
-
-.terminal-text {
-
-    color: var(--bright-green);
-
-    text-shadow:
-
-        0 0 5px rgba(56,166,83,0.6);
-
-}
-
-
-/* ==========================================
-   FOOTER
-========================================== */
-
-.footer {
-
-    text-align: center;
-
-    border-top: 2px solid var(--green);
-
-    padding-top: 15px;
-
-    font-weight: bold;
-
-    margin-top: 20px;
-
-    font-size: 20px;
-
-    color: var(--text);
-
-}
-
-
-/* ==========================================
-   NAVIGATION WINDOW
-========================================== */
-
-.cam-container {
-
-    grid-area: cam;
-
-}
-
-.cam-container .window-body {
-
-    height: 200px;
-
-    overflow-y: auto;
-
-}
-
-
-/* ==========================================
-   NAVIGATION
-========================================== */
-
-.nav-list {
-
-    list-style: none;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 12px;
-
-}
-
-
-.nav-link {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 10px;
-
-    text-decoration: none;
-
-    color: var(--text);
-
-    font-size: 22px;
-
-    font-weight: bold;
-
-    transition: all 0.2s ease;
-
-    padding: 3px 5px;
-
-}
-
-
-.nav-link img {
-
-    width: 26px;
-
-    height: 26px;
-
-    object-fit: contain;
-
-    transition: transform 0.2s ease;
-
-    filter:
-
-        grayscale(100%)
-
-        sepia(100%)
-
-        hue-rotate(70deg)
-
-        saturate(80%);
-
-}
-
-
-.nav-link:hover {
-
-    background-color: var(--green);
-
-    color: var(--terminal-green);
-
-    transform: translateX(8px);
-
-    border-radius: 0;
-
-}
-
-
-.nav-link:hover img {
-
-    transform: rotate(15deg) scale(1.2);
-
-}
-
-
-/* ==========================================
-   CHAT / ARCHIVE TERMINAL
-========================================== */
-
-.chat-container {
-
-    grid-area: chat;
-
-    display: flex;
-
-    flex-direction: column;
-
-    height: 100%;
-
-}
-
-
-.chat-container .window-body {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 15px;
-
-    padding: 10px;
-
-    flex-grow: 1;
-
-}
-
-
-/* ==========================================
-   ARCHIVAL NOTICE
-========================================== */
-
-.webrings-box {
-
-    height: 275px;
-
-    overflow-y: auto;
-
-    border: 1px dotted var(--green);
-
-    padding: 10px;
-
-    flex-shrink: 0;
-
-}
-
-
-/* ==========================================
-   UPDATE LOG
-========================================== */
-
-.update-log-box {
-
-    overflow-y: auto;
-
-    border: 1px dotted var(--green);
-
-    padding: 10px;
-
-    min-height: 260px;
-
-}
-
-
-.chat-container h3 {
-
-    border-bottom: 1px solid var(--green);
-
-    margin-bottom: 10px;
-
-    font-size: 18px;
-
-    color: var(--bright-green);
-
-}
-
-
-/* ==========================================
-   SMALL WINDOWS
-========================================== */
-
-.mini-left {
-
-    grid-area: follower;
-
-}
-
-.mini-center {
-
-    grid-area: sub;
-
-}
-
-.mini-right {
-
-    grid-area: dono;
-
-}
-
-
-.mini-window-body {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 8px;
-
-    height: 65px;
-
-}
-
-
-/* ==========================================
-   FOUR LINKS
-========================================== */
-
-.four-links-grid {
-
-    display: flex;
-
-    flex-direction: row;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    width: 100%;
-
-    gap: 5px;
-
-}
-
-
-.four-links-grid a {
-
-    display: block;
-
-    width: 45px;
-
-    height: 45px;
-
-}
-
-
-.four-links-grid a img {
-
-    width: 45px;
-
-    height: 45px;
-
-    object-fit: cover;
-
-    border-radius: 0;
-
-    border: 2px solid var(--green);
-
-    transition: transform 0.2s;
-
-}
-
-
-.four-links-grid a:hover img {
-
-    transform: scale(1.1);
-
-    border-color: var(--bright-green);
-
-}
-
-
-/* ==========================================
-   ARCHIVE ID
-========================================== */
-
-.web-button-container {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    width: 100%;
-
-}
-
-
-.web-button {
-
-    width: 88px;
-
-    height: 31px;
-
-    border: 1px solid var(--green);
-
-    flex-shrink: 0;
-
-}
-
-
-.code-box {
-
-    flex-grow: 1;
-
-    height: 45px;
-
-    font-family: 'VT323', monospace;
-
-    font-size: 14px;
-
-    resize: none;
-
-    overflow-y: auto;
-
-    border: 1px solid var(--green);
-
-    padding: 4px;
-
-    background: var(--black);
-
-    color: var(--terminal-green);
-
-}
-
-
-/* ==========================================
-   COUNTER
-========================================== */
-
-.counter-container {
-
-    display: flex;
-
-    justify-content: center;
-
-    align-items: center;
-
-    width: 100%;
-
-    color: var(--bright-green);
-
-}
-
-
-/* ==========================================
-   GENERAL LINKS
-========================================== */
-
-a {
-
-    color: var(--terminal-green);
-
-    text-decoration: none;
-
-    border-bottom: 2px dashed var(--green);
-
-    font-weight: bold;
-
-    padding: 0 2px;
-
-    transition:
-
-        background-color 0.1s ease,
-
-        color 0.1s ease;
-
-}
-
-
-a:hover {
-
-    background-color: var(--green);
-
-    color: var(--terminal-green);
-
-    border-bottom-style: solid;
-
-}
-
-
-a:visited {
-
-    color: var(--text);
-
-}
-
-
-/* ==========================================
-   IMAGE LINKS
-========================================== */
-
-a:has(img) {
-
-    border-bottom: none !important;
-
-    padding: 0 !important;
-
-    background-color: transparent !important;
-
-}
-
-
-a:hover:has(img) {
-
-    background-color: transparent !important;
+    color: #000;
 
 }
 
@@ -1042,38 +581,7 @@ a:hover:has(img) {
    RESPONSIVE
 ========================================== */
 
-@media (max-width: 900px) {
-
-    .layout-container {
-
-        grid-template-columns: 1fr;
-
-        grid-template-areas:
-
-            "main"
-
-            "cam"
-
-            "chat"
-
-            "follower"
-
-            "sub"
-
-            "dono";
-
-    }
-
-    .main-container {
-
-        height: auto;
-
-    }
-
-}
-
-
-@media (max-width: 600px) {
+@media (max-width: 800px) {
 
     body {
 
@@ -1081,7 +589,8 @@ a:hover:has(img) {
 
     }
 
-    .profile-section {
+
+    .topbar {
 
         flex-direction: column;
 
@@ -1089,21 +598,44 @@ a:hover:has(img) {
 
     }
 
-    .profile-mask {
 
-        margin-top: 0;
+    .main-grid {
 
-    }
-
-    .site-title {
-
-        font-size: 48px;
+        grid-template-columns: 1fr;
 
     }
 
-    .stamps-text-section {
+
+    .sidebar {
+
+        border-right: none;
+
+        border-bottom: 2px solid var(--border);
+
+    }
+
+
+    .content {
+
+        grid-template-columns: 1fr;
+
+    }
+
+
+    .panel.wide {
+
+        grid-column: auto;
+
+    }
+
+
+    .statusbar {
 
         flex-direction: column;
+
+        gap: 5px;
+
+        align-items: flex-start;
 
     }
 
