@@ -6,410 +6,274 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Magnus Institute Archive</title>
+    <title>Magnus Institute // Archive Database</title>
 
-    <link rel="icon" type="image/png" href="https://i.postimg.cc/brGGFFqb/IMG_1929.png">
+    <!-- Main stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
 
-    <link rel="stylesheet" href="style.css">
+    <!-- Terminal font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 
 </head>
 
 <body>
 
-<div class="layout-container">
+<div class="database">
 
-    <!-- ==========================================
-         MAIN ARCHIVE WINDOW
-    =========================================== -->
+    <!-- =========================
+         TOP BAR
+    ========================== -->
 
-    <div class="window main-container">
+    <header class="topbar">
 
-        <div class="window-header">
-
-            <span>MAGNUS INSTITUTE // ARCHIVE DATABASE</span>
-
-            <div class="window-controls">
-                <div class="window-btn min"></div>
-                <div class="window-btn max"></div>
-                <div class="window-btn close"></div>
-            </div>
-
+        <div class="system-title">
+            MAGNUS INSTITUTE // ARCHIVE DATABASE
         </div>
 
+        <div class="system-version">
+            ARCHIVE TERMINAL v3.2.17
+        </div>
 
-        <div class="window-body">
+        <div id="clock">
+            00-00-0000 00:00
+        </div>
 
-            <div class="banner"></div>
+    </header>
 
 
-            <div class="profile-section">
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
 
-                <div class="profile-mask"></div>
+    <main class="main-grid">
 
-                <div class="site-title">
+
+        <!-- =========================
+             LEFT MENU
+        ========================== -->
+
+        <aside class="sidebar">
+
+            <div class="sidebar-title">
+                ARCHIVE INDEX
+            </div>
+
+            <nav>
+
+                <a href="pages/statements.html">
+                    ► STATEMENTS
+                </a>
+
+                <a href="pages/characters.html">
+                    ► PERSONS
+                </a>
+
+                <a href="pages/entities.html">
+                    ► ENTITIES
+                </a>
+
+                <a href="pages/timeline.html">
+                    ► TIMELINE
+                </a>
+
+                <a href="pages/about.html">
+                    ► ABOUT THE ARCHIVE
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+        <!-- =========================
+             MAIN CONTENT
+        ========================== -->
+
+        <section class="content">
+
+
+            <!-- INTRODUCTION -->
+
+            <section class="panel">
+
+                <div class="panel-title">
                     MAGNUS ARCHIVE
                 </div>
 
-            </div>
+                <p>
+                    Welcome to the digital archive of the Magnus Institute, London.
+                </p>
+
+                <p>
+                    This database contains records relating to statements,
+                    persons, locations and entities of archival interest.
+                </p>
+
+                <p>
+                    Statements are catalogued according to their original
+                    archival designation. Cross-referencing between statements
+                    may reveal recurring individuals, locations or phenomena.
+                </p>
+
+            </section>
 
 
-            <div class="stamps-text-section">
+            <!-- WARNING -->
 
-                <div class="stamps-container">
+            <section class="panel warning">
 
-                    <img class="stamp"
-                         src="https://64.media.tumblr.com/435edaae62c10bec33af7681955b8cbb/dcd971c3b6eef1dd-e1/s100x200/fc60fe18511c27f53e3d6ce709a0080e106b3f13.gifv"
-                         alt="ARCHIVE stamp">
-
-                    <img class="stamp"
-                         src="https://64.media.tumblr.com/435edaae62c10bec33af7681955b8cbb/dcd971c3b6eef1dd-e1/s100x200/fc60fe18511c27f53e3d6ce709a0080e106b3f13.gifv"
-                         alt="ARCHIVE stamp">
-
-                    <img class="stamp"
-                         src="https://64.media.tumblr.com/435edaae62c10bec33af7681955b8cbb/dcd971c3b6eef1dd-e1/s100x200/fc60fe18511c27f53e3d6ce709a0080e106b3f13.gifv"
-                         alt="ARCHIVE stamp">
-
-                    <img class="stamp"
-                         src="https://64.media.tumblr.com/435edaae62c10bec33af7681955b8cbb/dcd971c3b6eef1dd-e1/s100x200/fc60fe18511c27f53e3d6ce709a0080e106b3f13.gifv"
-                         alt="ARCHIVE stamp">
-
+                <div class="panel-title">
+                    ARCHIVAL WARNING
                 </div>
 
+                <p>
+                    WARNING: Some archival materials may contain disturbing
+                    or otherwise sensitive subject matter.
+                </p>
 
-                <div class="text-container">
+                <p>
+                    Proceed with appropriate caution.
+                </p>
 
-                    <p>
-                        <strong>MAGNUS INSTITUTE ARCHIVAL DATABASE</strong>
-                    </p>
+            </section>
 
-                    <br>
 
-                    <p>
-                        Welcome to the digital archive of the Magnus Institute,
-                        London. This database contains records relating to
-                        statements, persons, locations and entities of
-                        archival interest.
-                    </p>
+            <!-- STATUS -->
 
-                    <br>
+            <section class="panel">
 
-                    <p>
-                        Statements are catalogued according to their original
-                        archival designation. Cross-referencing between
-                        statements may reveal recurring individuals,
-                        locations or phenomena.
-                    </p>
-
-                    <br>
-
-                    <p>
-                        <strong>WARNING:</strong>
-                        Some archival materials may contain disturbing or
-                        otherwise sensitive subject matter. Proceed with
-                        appropriate caution.
-                    </p>
-
-                    <br>
-
-                    <p>
-                        Current database status:
-                        <span class="terminal-text">ONLINE</span>
-                    </p>
-
+                <div class="panel-title">
+                    SYSTEM STATUS
                 </div>
 
-            </div>
+                <p>
+                    Current database status:
+                    <span class="online">ONLINE</span>
+                </p>
+
+                <p>
+                    Institute Location: LONDON
+                </p>
+
+                <p>
+                    Access Level: PUBLIC
+                </p>
+
+                <p>
+                    Network Connection:
+                    <span class="online">ESTABLISHED</span>
+                </p>
+
+            </section>
 
 
-            <div class="footer">
+            <!-- ARCHIVE TERMINAL -->
 
-                MAGNUS INSTITUTE ARCHIVAL DATABASE //
-                ACCESS LOGGED //
-                <span class="terminal-text">NO UNAUTHORISED ACCESS</span>
+            <section class="panel wide">
 
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- ==========================================
-         NAVIGATION WINDOW
-    =========================================== -->
-
-    <div class="window cam-container">
-
-        <div class="window-header">
-
-            <span>ARCHIVE INDEX</span>
-
-            <div class="window-controls">
-                <div class="window-btn min"></div>
-                <div class="window-btn max"></div>
-                <div class="window-btn close"></div>
-            </div>
-
-        </div>
-
-
-        <div class="window-body">
-
-            <ul class="nav-list">
-
-                <li>
-                    <a href="pages/statements.html" class="nav-link">
-                        <img src="https://i.postimg.cc/dQ4ztvzQ/IMG_2344.gif"
-                             alt="">
-                        STATEMENTS
-                    </a>
-                </li>
-
-                <li>
-                    <a href="pages/characters.html" class="nav-link">
-                        <img src="https://i.postimg.cc/dQ4ztvzQ/IMG_2344.gif"
-                             alt="">
-                        PERSONS
-                    </a>
-                </li>
-
-                <li>
-                    <a href="pages/entities.html" class="nav-link">
-                        <img src="https://i.postimg.cc/dQ4ztvzQ/IMG_2344.gif"
-                             alt="">
-                        ENTITIES
-                    </a>
-                </li>
-
-                <li>
-                    <a href="pages/timeline.html" class="nav-link">
-                        <img src="https://i.postimg.cc/dQ4ztvzQ/IMG_2344.gif"
-                             alt="">
-                        TIMELINE
-                    </a>
-                </li>
-
-                <li>
-                    <a href="pages/about.html" class="nav-link">
-                        <img src="https://i.postimg.cc/dQ4ztvzQ/IMG_2344.gif"
-                             alt="">
-                        ABOUT THE ARCHIVE
-                    </a>
-                </li>
-
-            </ul>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- ==========================================
-         ARCHIVE NOTES / UPDATES
-    =========================================== -->
-
-    <div class="window chat-container">
-
-        <div class="window-header">
-
-            <span>ARCHIVE TERMINAL</span>
-
-            <div class="window-controls">
-                <div class="window-btn min"></div>
-                <div class="window-btn max"></div>
-                <div class="window-btn close"></div>
-            </div>
-
-        </div>
-
-
-        <div class="window-body">
-
-            <div class="webrings-box">
-
-                <h3>ARCHIVAL NOTICE</h3>
+                <div class="panel-title">
+                    ARCHIVE TERMINAL
+                </div>
 
                 <p>
                     This terminal is connected to the Magnus Institute
                     archival network.
                 </p>
 
-                <br>
-
                 <p>
-                    Please consult the relevant case file before
-                    accessing restricted material.
+                    Please consult the relevant case file before accessing
+                    restricted material.
                 </p>
 
-            </div>
+                <div class="terminal-log">
+
+                    <p>
+                        <span>[SYSTEM]</span>
+                        Database initialised.
+                    </p>
+
+                    <p>
+                        <span>[SYSTEM]</span>
+                        Public access terminal online.
+                    </p>
+
+                    <p>
+                        <span>[ARCHIVE]</span>
+                        Statement indexing awaiting completion.
+                    </p>
+
+                    <p>
+                        <span>[NOTICE]</span>
+                        Cross-referencing system under development.
+                    </p>
+
+                    <p class="warning-text">
+                        <span>[WARNING]</span>
+                        Unidentified archival activity detected.
+                    </p>
+
+                </div>
+
+            </section>
 
 
-            <div class="update-log-box">
+            <!-- CASE FILES -->
 
-                <h3>ARCHIVE LOG</h3>
+            <section class="panel wide">
 
-                <p>
-                    <b>[SYSTEM]</b>
-                    Database initialised.
-                </p>
+                <div class="panel-title">
+                    CASE FILES
+                </div>
 
-                <p>
-                    <b>[SYSTEM]</b>
-                    Public access terminal online.
-                </p>
+                <div class="case-files">
 
-                <p>
-                    <b>[ARCHIVE]</b>
-                    Statement indexing awaiting completion.
-                </p>
+                    <a href="pages/statements.html">
+                        [ STATEMENTS ]
+                    </a>
 
-                <p>
-                    <b>[NOTICE]</b>
-                    Cross-referencing system under development.
-                </p>
+                    <a href="pages/characters.html">
+                        [ PERSONS ]
+                    </a>
 
-                <p>
-                    <b>[WARNING]</b>
-                    Unidentified archival activity detected.
-                </p>
+                    <a href="pages/entities.html">
+                        [ ENTITIES ]
+                    </a>
 
-            </div>
+                </div>
 
-        </div>
-
-    </div>
+            </section>
 
 
+        </section>
 
-    <!-- ==========================================
-         SMALL WINDOW 1
-    =========================================== -->
-
-    <div class="window mini-left">
-
-        <div class="window-header">
-
-            <span>CASE FILES</span>
-
-            <div class="window-controls">
-                <div class="window-btn min"></div>
-                <div class="window-btn max"></div>
-                <div class="window-btn close"></div>
-            </div>
-
-        </div>
+    </main>
 
 
-        <div class="window-body mini-window-body">
+    <!-- =========================
+         FOOTER / STATUS BAR
+    ========================== -->
 
-            <div class="four-links-grid">
+    <footer class="statusbar">
 
-                <a href="pages/statements.html">
-                    <img src="https://i.pinimg.com/736x/dc/de/e2/dcdee20a4c56c531f0f9ddec72c398b2.jpg"
-                         alt="Statements">
-                </a>
+        <span>
+            MAGNUS INSTITUTE ARCHIVAL NETWORK
+        </span>
 
-                <a href="pages/characters.html">
-                    <img src="https://i.pinimg.com/webp85/1200x/4a/0d/d7/4a0dd7d4a02622868c100f7bab991603.webp"
-                         alt="Persons">
-                </a>
+        <span>
+            ● ARCHIVE ONLINE
+        </span>
 
-                <a href="pages/entities.html">
-                    <img src="https://i.pinimg.com/736x/d2/47/c4/d247c445031b9174acf8e8358fc9452e.jpg"
-                         alt="Entities">
-                </a>
+    </footer>
 
-                <a href="pages/timeline.html">
-                    <img src="https://i.pinimg.com/736x/4b/48/2c/4b482c8cdaa66254150a0e692b263ea6.jpg"
-                         alt="Timeline">
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- ==========================================
-         SMALL WINDOW 2
-    =========================================== -->
-
-    <div class="window mini-center">
-
-        <div class="window-header">
-
-            <span>ARCHIVE ID</span>
-
-            <div class="window-controls">
-                <div class="window-btn min"></div>
-                <div class="window-btn max"></div>
-                <div class="window-btn close"></div>
-            </div>
-
-        </div>
-
-
-        <div class="window-body mini-window-body">
-
-            <div class="web-button-container">
-
-                <img class="web-button"
-                     src="https://64.media.tumblr.com/7637b8f1c5783cffd363b8b5533fe811/01810c298b9b7eda-84/s100x200/07c4d2a96eb4a62b848d398cf8f37b56e62cdca2.gifv"
-                     alt="Archive">
-
-                <textarea class="code-box" readonly>
-MAGNUS INSTITUTE
-ARCHIVAL DATABASE
-STATUS: ONLINE
-ACCESS: PUBLIC
-                </textarea>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- ==========================================
-         SMALL WINDOW 3
-    =========================================== -->
-
-    <div class="window mini-right">
-
-        <div class="window-header">
-
-            <span>NETWORK STATUS</span>
-
-            <div class="window-controls">
-                <div class="window-btn min"></div>
-                <div class="window-btn max"></div>
-                <div class="window-btn close"></div>
-            </div>
-
-        </div>
-
-
-        <div class="window-body mini-window-body">
-
-            <div class="counter-container">
-
-                <span class="terminal-text">
-                    ● ARCHIVE ONLINE
-                </span>
-
-            </div>
-
-        </div>
-
-    </div>
 
 </div>
 
+
+<script src="js/script.js"></script>
+
 </body>
+
 </html>
